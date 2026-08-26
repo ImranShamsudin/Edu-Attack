@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background text-on-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Management - EduAttach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#000a1e",
+                      "tertiary-container": "#122236",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "secondary-fixed-dim": "#b0c6ff",
+                      "surface-container-high": "#e6e8ea",
+                      "on-surface": "#191c1e",
+                      "secondary": "#0056c6",
+                      "on-secondary-fixed-variant": "#00429c",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#d6e3ff",
+                      "secondary-container": "#006df8",
+                      "inverse-surface": "#2d3133",
+                      "surface-container-low": "#f2f4f6",
+                      "tertiary-fixed": "#d3e4fe",
+                      "on-background": "#191c1e",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#44474e",
+                      "surface-variant": "#e0e3e5",
+                      "on-primary-fixed": "#001b3d",
+                      "outline-variant": "#c4c6cf",
+                      "primary-fixed-dim": "#aec7f6",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#d9e2ff",
+                      "outline": "#74777f",
+                      "background": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "on-primary-container": "#708ab5",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#d8dadc",
+                      "on-secondary-fixed": "#001945",
+                      "primary-container": "#002147",
+                      "surface-tint": "#465f88",
+                      "on-tertiary-container": "#7a8aa2",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "inverse-primary": "#aec7f6",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-bright": "#f7f9fb",
+                      "on-secondary-container": "#fefcff",
+                      "tertiary": "#000b1b",
+                      "surface-container": "#eceef0",
+                      "error": "#ba1a1a",
+                      "surface": "#f7f9fb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "container-padding": "24px",
+                      "sidebar-width": "260px",
+                      "gutter": "16px",
+                      "base": "4px",
+                      "stack-md": "16px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "code-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "code-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="h-full flex overflow-hidden font-body-md text-body-md">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-stack-md bg-primary dark:bg-primary-container text-secondary-fixed fixed h-screen w-sidebar-width left-0 top-0 z-50">
+  <div class="px-container-padding mb-stack-lg flex items-center gap-stack-sm">
+    <a class="flex items-center gap-stack-sm" href="admin.html">
+      <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-secondary-container text-sm">school</span>
+      </div>
+      <div>
+        <div class="font-headline-sm text-headline-sm font-bold text-white">EduAttach</div>
+        <div class="text-[10px] text-on-primary-fixed-variant uppercase tracking-wider">Management System</div>
+      </div>
+    </a>
+  </div>
+
+  <button class="mx-container-padding mb-stack-lg py-2 px-4 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-lg flex items-center justify-center gap-2 hover:bg-secondary transition-colors duration-200">
+    <span class="material-symbols-outlined text-sm">add</span>
+    New Application
+  </button>
+
+  <div class="flex-1 overflow-y-auto px-2 space-y-1">
+    <!-- Dashboard -->
+    <a class="flex items-center gap-stack-sm py-2 px-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer rounded-lg" href="admin.html">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+      Dashboard
+    </a>
+
+    <!-- Manage Students -->
+    <a class="flex items-center gap-stack-sm py-2 px-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer rounded-lg" href="admin.html#students">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">groups</span>
+      Manage Students
+    </a>
+
+    <!-- Manage Companies (ACTIVE) -->
+    <a class="flex items-center gap-stack-sm py-2 px-3 bg-secondary-container text-on-secondary-container font-semibold rounded-lg mx-2 transition-all duration-200 cursor-pointer" href="companies.html">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">business</span>
+      Manage Companies
+    </a>
+
+    <!-- Assessments -->
+    <a class="flex items-center gap-stack-sm py-2 px-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer rounded-lg" href="evaluations.html">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assignment_turned_in</span>
+      Assessments
+    </a>
+
+    <!-- Reports -->
+    <a class="flex items-center gap-stack-sm py-2 px-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer rounded-lg" href="weekly-reports.html">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+      Reports
+    </a>
+
+    <!-- Settings -->
+    <a class="flex items-center gap-stack-sm py-2 px-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer rounded-lg" href="settings.html">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+      Settings
+    </a>
+  </div>
+</nav>
+<div class="mt-auto px-2 space-y-1 pt-stack-md border-t border-on-primary-fixed-variant/20 mx-container-padding">
+<a class="flex items-center gap-stack-sm py-2 px-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer rounded-lg" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-stack-sm py-2 px-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer rounded-lg" href="#" onclick="logout(); return false;">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-sidebar-width min-w-0 bg-background h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim fixed top-0 right-0 w-full md:w-[calc(100%-260px)] h-16 border-b border-outline-variant flex justify-between items-center px-container-padding z-40">
+<div class="flex items-center gap-stack-md">
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Search -->
+<div class="hidden sm:flex items-center bg-surface-container-low rounded-lg px-3 py-1.5 border border-outline-variant focus-within:border-secondary transition-colors w-64 lg:w-96">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] mr-2">search</span>
+<input class="bg-transparent border-none outline-none focus:ring-0 text-body-md font-body-md w-full placeholder:text-on-surface-variant/70 text-on-surface" placeholder="Search companies, students..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-sm text-primary dark:text-primary-fixed font-label-md text-label-md">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer hover:opacity-80 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer hover:opacity-80 rounded-full">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer hover:opacity-80 rounded-full flex items-center gap-2 ml-2">
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, professional headshot photo of an administrator, well-lit, neutral background, corporate modern style, ensuring academic administrative context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjliJbvg_qP1nnXerIJmCoWCr0KTMwdpi22UKYxigJASArUwlNjz_Bt0c5giI3SCigafpkbRNsm9EBOXeH0x1fpcxw7cwCcuCbpkwhkUMGwjz6-7kYtwwxvfv1u4FOo8Kh7DrVKPiDWCWgnffL96PIzCFoMLWZfxeAd8QZKPLqh5aIZAnx34fNdiEHnmWYMCYklEMaAgkvVLEtUFeW3MSUIqFa2ZglSYGw8QcKdvWR91PZ2JDTnMZavQ"/>
+<div class="hidden lg:flex flex-col items-start">
+<span class="font-label-md text-label-md text-on-surface">Sarah Jenkins</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Coordinator</span>
+</div>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto mt-16 p-gutter md:p-container-padding bg-background">
+<div class="max-w-7xl mx-auto space-y-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-stack-md">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Company Management</h1>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1">Manage partner organizations, track placement slots, and review MOUs.</p>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-secondary-container transition-colors shadow-sm" id="toggle-add-form-btn">
+<span class="material-symbols-outlined text-[18px]">add_business</span>
+                            Add New Company
+                        </button>
+</div>
+</div>
+<!-- Add Company Form (hidden by default) -->
+<div class="bg-surface border border-outline-variant rounded-lg p-container-padding" id="add-company-panel" style="display:none;">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">New Organization</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Company Name</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-lg text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" id="new-org-name" placeholder="e.g. Safaricom PLC" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Address</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-lg text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" id="new-org-address" placeholder="e.g. Nairobi" type="text">
+</div>
+<div class="sm:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Primary Contact (Industrial Supervisor)</label>
+<select class="w-full px-3 py-2 border border-outline-variant rounded-lg text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none bg-white" id="new-org-contact">
+<option value="">-- None yet --</option>
+</select>
+</div>
+</div>
+<button class="mt-4 bg-secondary text-on-secondary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-secondary-container transition-colors" id="submit-org-btn">Save Organization</button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<div class="bg-surface border border-outline-variant rounded-lg p-container-padding flex flex-col hover:border-secondary/30 transition-colors">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="text-on-surface-variant font-label-md text-label-md">Total Partner Companies</span>
+<div class="w-8 h-8 rounded-full bg-primary-fixed/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">domain</span>
+</div>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface" id="stat-total-orgs">-</div>
+</div>
+<div class="bg-surface border border-outline-variant rounded-lg p-container-padding flex flex-col hover:border-secondary/30 transition-colors">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="text-on-surface-variant font-label-md text-label-md">With Assigned Contact</span>
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</div>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface" id="stat-with-contact">-</div>
+</div>
+<div class="bg-surface border border-outline-variant rounded-lg p-container-padding flex flex-col hover:border-secondary/30 transition-colors">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="text-on-surface-variant font-label-md text-label-md">Awaiting Contact</span>
+<div class="w-8 h-8 rounded-full bg-error-container/50 flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+</div>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface" id="stat-without-contact">-</div>
+</div>
+</div>
+<!-- Main Content Area: Table -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Company</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Address</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Primary Contact</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50" id="orgs-tbody">
+<tr><td colspan="3" class="py-6 px-4 text-center text-on-surface-variant">Loading...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+<script src="js/api.js"></script>
+<script>
+    const currentUser = requireAuth(['admin']);
+    let allOrgs = [];
+
+    document.getElementById('toggle-add-form-btn').addEventListener('click', () => {
+      const panel = document.getElementById('add-company-panel');
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    });
+
+    async function loadContactOptions() {
+      try {
+        const data = await apiRequest('/admin/users?role=industrial_supervisor');
+        document.getElementById('new-org-contact').innerHTML =
+          '<option value="">-- None yet --</option>' +
+          data.users.map(u => `<option value="${u.id}">${u.name} (${u.email})</option>`).join('');
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    async function loadOrgs() {
+      try {
+        const data = await apiRequest('/organizations');
+        allOrgs = data.organizations;
+        document.getElementById('stat-total-orgs').textContent = allOrgs.length;
+        document.getElementById('stat-with-contact').textContent = allOrgs.filter(o => o.contact_id).length;
+        document.getElementById('stat-without-contact').textContent = allOrgs.filter(o => !o.contact_id).length;
+        renderOrgsTable();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    function renderOrgsTable() {
+      const tbody = document.getElementById('orgs-tbody');
+      if (allOrgs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="py-6 px-4 text-center text-on-surface-variant">No organizations yet. Add one above.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = allOrgs.map(o => `
+        <tr class="hover:bg-surface-container-low/50 transition-colors">
+          <td class="py-3 px-4 font-semibold text-on-surface">${o.name}</td>
+          <td class="py-3 px-4 text-on-surface-variant">${o.address || '-'}</td>
+          <td class="py-3 px-4">
+            ${o.contact_name
+              ? `<div class="text-on-surface text-[13px]">${o.contact_name}</div><div class="text-on-surface-variant text-[12px]">${o.contact_email}</div>`
+              : '<span class="text-on-surface-variant text-[13px]">Not set</span>'}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    document.getElementById('submit-org-btn').addEventListener('click', async () => {
+      const name = document.getElementById('new-org-name').value.trim();
+      const address = document.getElementById('new-org-address').value.trim();
+      const contactId = document.getElementById('new-org-contact').value;
+
+      if (!name) { toast('Company name is required.', true); return; }
+
+      try {
+        await apiRequest('/organizations', {
+          method: 'POST',
+          body: {
+            name,
+            address: address || null,
+            primary_contact_id: contactId ? Number(contactId) : null,
+          },
+        });
+        toast('Organization added!');
+        document.getElementById('new-org-name').value = '';
+        document.getElementById('new-org-address').value = '';
+        document.getElementById('new-org-contact').value = '';
+        document.getElementById('add-company-panel').style.display = 'none';
+        loadOrgs();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    });
+
+    loadContactOptions();
+    loadOrgs();
+</script>
+
+</body></html>

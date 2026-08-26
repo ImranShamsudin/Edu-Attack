@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html class="h-full bg-background dark:bg-background" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Industrial Supervisor Dashboard - EduAttach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-surface-variant": "#44474e",
+                "on-background": "#191c1e",
+                "secondary-fixed-dim": "#b0c6ff",
+                "on-secondary-fixed": "#001945",
+                "surface-container-low": "#f2f4f6",
+                "surface": "#f7f9fb",
+                "background": "#f7f9fb",
+                "on-surface": "#191c1e",
+                "on-primary-fixed": "#001b3d",
+                "on-secondary-fixed-variant": "#00429c",
+                "inverse-on-surface": "#eff1f3",
+                "surface-container-high": "#e6e8ea",
+                "on-primary-container": "#708ab5",
+                "tertiary-fixed-dim": "#b7c8e1",
+                "outline-variant": "#c4c6cf",
+                "on-tertiary-fixed": "#0b1c30",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#aec7f6",
+                "tertiary-container": "#122236",
+                "on-secondary": "#ffffff",
+                "on-tertiary-fixed-variant": "#38485d",
+                "surface-variant": "#e0e3e5",
+                "surface-dim": "#d8dadc",
+                "surface-bright": "#f7f9fb",
+                "primary": "#000a1e",
+                "primary-container": "#002147",
+                "on-primary-fixed-variant": "#2d476f",
+                "tertiary-fixed": "#d3e4fe",
+                "secondary-container": "#006df8",
+                "on-tertiary-container": "#7a8aa2",
+                "error-container": "#ffdad6",
+                "on-error-container": "#93000a",
+                "outline": "#74777f",
+                "inverse-surface": "#2d3133",
+                "on-secondary-container": "#fefcff",
+                "secondary": "#0056c6",
+                "on-tertiary": "#ffffff",
+                "inverse-primary": "#aec7f6",
+                "secondary-fixed": "#d9e2ff",
+                "on-primary": "#ffffff",
+                "surface-container": "#eceef0",
+                "on-error": "#ffffff",
+                "tertiary": "#000b1b",
+                "surface-tint": "#465f88",
+                "error": "#ba1a1a",
+                "surface-container-highest": "#e0e3e5",
+                "primary-fixed": "#d6e3ff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "stack-lg": "32px",
+                "stack-md": "16px",
+                "base": "4px",
+                "sidebar-width": "260px",
+                "container-padding": "24px",
+                "stack-sm": "8px",
+                "gutter": "16px"
+              },
+              "fontFamily": {
+                "body-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-sm": ["Inter"],
+                "display-lg-mobile": ["Inter"],
+                "label-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "code-sm": ["Inter"]
+              },
+              "fontSize": {
+                "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                "display-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                "code-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+</script>
+<style>
+        .assigned-badge {
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .assigned-row {
+            background-color: #f0f7ff;
+        }
+        .assigned-row:hover {
+            background-color: #e3f0ff !important;
+        }
+    </style>
+</head>
+<body class="h-full flex overflow-hidden bg-background text-on-background font-body-md text-body-md">
+<aside class="fixed h-screen w-sidebar-width left-0 top-0 bg-primary dark:bg-primary-container hidden md:flex flex-col py-stack-md z-50">
+<div class="px-container-padding pb-stack-lg border-b border-primary-fixed-dim/20 mb-stack-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">business</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-white">EduAttach</h1>
+<p class="font-label-md text-label-md text-primary-fixed-dim">Management System</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-2 space-y-1">
+<a class="bg-secondary-container text-on-secondary-container font-semibold rounded-lg mx-2 flex items-center gap-3 px-3 py-2 cursor-pointer transition-all duration-200" href="#" onclick="location.reload(); return false;">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+Dashboard
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white hover:bg-on-primary-fixed-variant/20 transition-colors mx-2 flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer" href="#" onclick="document.getElementById('student-search').focus(); return false;">
+<span class="material-symbols-outlined text-[20px]">search</span>
+Search Students
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white hover:bg-on-primary-fixed-variant/20 transition-colors mx-2 flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer" href="#" onclick="document.getElementById('section-students').scrollIntoView({ behavior: 'smooth' }); return false;">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+All Students
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white hover:bg-on-primary-fixed-variant/20 transition-colors mx-2 flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer" href="#" onclick="document.getElementById('review-panel').scrollIntoView({ behavior: 'smooth' }); return false;">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+Logbook Review
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white hover:bg-on-primary-fixed-variant/20 transition-colors mx-2 flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer" href="settings.html">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+Settings
+</a>
+</nav>
+<div class="mt-auto px-2 border-t border-primary-fixed-dim/20 pt-stack-md space-y-1">
+<a class="text-on-primary-fixed-variant hover:text-white hover:bg-on-primary-fixed-variant/20 transition-colors mx-2 flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+Help Center
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white hover:bg-on-primary-fixed-variant/20 transition-colors mx-2 flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer" href="#" onclick="logout(); return false;">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+Logout
+</a>
+</div>
+</aside>
+
+<div class="flex-1 md:ml-sidebar-width flex flex-col min-h-0 bg-surface">
+<header class="h-16 bg-surface dark:bg-surface-dim border-b border-outline-variant flex justify-between items-center px-container-padding z-40 shrink-0 sticky top-0">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 -ml-2 text-primary dark:text-primary-fixed hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="hidden md:block font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">Industrial Supervisor Dashboard</h2>
+<h2 class="md:hidden font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">EduAttach</h2>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative hidden sm:block mr-2">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input id="student-search" class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full font-body-md text-body-md focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary w-64 transition-all" placeholder="Search students by name..." type="text" oninput="filterStudents(this.value)">
+</div>
+<button class="p-2 text-primary dark:text-primary-fixed hover:bg-surface-container-high transition-colors rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="ml-2 w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" alt="Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgksUmOnWkzI-JybrUdJbCCKNWwYR072ENKI75twpoqpFbni7IMUfSw344oWtryf8dh9L3ipwWmOf0q7RRt2EqrnkHIY3vpiP_roB3Ht_1eNpmDU9aRAm91FiUyhKh7YtNo6DxAbek92oCYM-4OA1IwPveRYC7jGBxe738qdTLPh2J1_Pli9Q6yxvlWgCt6PMJfAg62UmnNRvqtsyGen0RcmK2ll8tSGgzUgQX45F-bfbQeBJDRuK5CA"/>
+</button>
+</div>
+</header>
+
+<main class="flex-1 overflow-y-auto p-container-padding">
+<div class="max-w-7xl mx-auto space-y-stack-lg">
+<!-- Stats Section -->
+<section>
+<div class="flex justify-between items-end mb-stack-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-background">Overview</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">All students on attachment and your assigned supervision.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-fixed/30 text-on-primary-fixed rounded-lg">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<span class="text-on-surface-variant font-label-md text-label-md">All Students</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-total-students">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">On Attachment</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-fixed/50 text-on-secondary-fixed rounded-lg">
+<span class="material-symbols-outlined">assignment_ind</span>
+</div>
+<span class="text-on-surface-variant font-label-md text-label-md">Assigned to You</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-assigned-count">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Students Supervised</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-error-container text-on-error-container rounded-lg">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="text-on-surface-variant font-label-md text-label-md">Awaiting You</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-pending-entries">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Entries Without Feedback</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-fixed/50 text-on-tertiary-fixed rounded-lg">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<span class="text-on-surface-variant font-label-md text-label-md">Total</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-comments-given">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Comments Given</div>
+</div>
+</div>
+</section>
+
+<!-- Filter Tabs -->
+<div class="flex gap-2 mb-4" id="filter-tabs">
+<button class="px-4 py-2 rounded-lg bg-secondary text-white font-label-md text-label-md" id="filter-all" onclick="setFilter('all')">
+All Students
+</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors" id="filter-assigned" onclick="setFilter('assigned')">
+My Students
+</button>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter" id="section-students">
+<!-- Students Table -->
+<section class="lg:col-span-2 space-y-stack-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Students on Attachment</h3>
+<span class="text-sm text-on-surface-variant" id="student-count">0 students</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Student</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Organization</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Supervisor</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant" id="students-tbody">
+<tr><td colspan="5" class="p-6 text-center text-on-surface-variant">Loading...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- Review Panel -->
+<section class="space-y-stack-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Review Panel</h3>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4" id="review-panel">
+<p class="font-body-md text-body-md text-on-surface-variant text-center py-6">Select a student to review their logbook and reports.</p>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+<script src="js/api.js"></script>
+<script>
+    // ===== AUTHENTICATION CHECK =====
+    // Wait for the page to fully load before checking auth
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('=== Page Loaded - Checking Authentication ===');
+        const token = localStorage.getItem('token');
+        const userRaw = localStorage.getItem('user');
+        const user = userRaw ? JSON.parse(userRaw) : null;
+        
+        console.log('Token exists:', !!token);
+        console.log('User exists:', !!user);
+        console.log('User role:', user?.role);
+        console.log('Current URL:', window.location.href);
+        
+        // If no token or user, redirect to login
+        if (!token || !user) {
+            console.warn('No token or user found, redirecting to login');
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        // If user is not an industrial supervisor, redirect to their correct dashboard
+        if (user.role !== 'industrial_supervisor') {
+            console.warn(`Wrong role: ${user.role}, expected industrial_supervisor`);
+            const homePage = roleHomePage(user.role);
+            window.location.href = homePage;
+            return;
+        }
+        
+        console.log('✅ Authentication successful as Industrial Supervisor');
+        
+        // Initialize the dashboard
+        const currentUser = user;
+        window.currentUser = currentUser;
+        init();
+    });
+
+    // ===== GLOBAL VARIABLES =====
+    let allStudents = [];
+    let filteredStudents = [];
+    let selectedAttachmentId = null;
+    let currentFilter = 'all';
+    let assignedStudentIds = new Set();
+    let currentUser = null;
+
+    // ===== FILTER FUNCTIONS =====
+    function setFilter(filter) {
+        currentFilter = filter;
+        document.getElementById('filter-all').className = filter === 'all' 
+            ? 'px-4 py-2 rounded-lg bg-secondary text-white font-label-md text-label-md'
+            : 'px-4 py-2 rounded-lg bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors';
+        document.getElementById('filter-assigned').className = filter === 'assigned'
+            ? 'px-4 py-2 rounded-lg bg-secondary text-white font-label-md text-label-md'
+            : 'px-4 py-2 rounded-lg bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors';
+        applyFilters();
+    }
+
+    function applyFilters() {
+        const searchTerm = document.getElementById('student-search').value.toLowerCase().trim();
+        
+        let filtered = [...allStudents];
+        
+        if (currentFilter === 'assigned') {
+            filtered = filtered.filter(s => assignedStudentIds.has(s.attachment_id));
+        }
+        
+        if (searchTerm) {
+            filtered = filtered.filter(s => 
+                s.student_name.toLowerCase().includes(searchTerm) ||
+                s.student_email.toLowerCase().includes(searchTerm) ||
+                s.organization.toLowerCase().includes(searchTerm)
+            );
+        }
+        
+        filteredStudents = filtered;
+        renderStudentsTable();
+    }
+
+    function filterStudents(searchTerm) {
+        applyFilters();
+    }
+
+    // ===== MAIN INIT FUNCTION =====
+    async function init() {
+        try {
+            // Get current user from localStorage
+            const userRaw = localStorage.getItem('user');
+            currentUser = userRaw ? JSON.parse(userRaw) : null;
+            
+            if (!currentUser) {
+                console.error('No user found');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            console.log('Fetching assigned students...');
+            const assignedData = await apiRequest('/supervisor/students');
+            const assigned = assignedData.assigned_students || [];
+            assignedStudentIds = new Set(assigned.map(s => s.attachment_id));
+            console.log(`Found ${assigned.length} assigned students`);
+
+            console.log('Fetching all students on attachment...');
+            const allData = await apiRequest('/supervisor/all-students');
+            allStudents = (allData.students || []).filter(s => s.attachment_id);
+            console.log(`Found ${allStudents.length} students on attachment`);
+            
+            allStudents = allStudents.map(s => ({
+                ...s,
+                is_assigned: assignedStudentIds.has(s.attachment_id)
+            }));
+            
+            filteredStudents = [...allStudents];
+            renderStudentsTable();
+            
+            document.getElementById('stat-total-students').textContent = allStudents.length;
+            document.getElementById('stat-assigned-count').textContent = assigned.length;
+            document.getElementById('student-count').textContent = `${filteredStudents.length} students`;
+            
+            await computeStats(assigned);
+        } catch (err) {
+            console.error('Init error:', err);
+            toast(err.message, true);
+        }
+    }
+
+    // ===== RENDER TABLE =====
+    function renderStudentsTable() {
+        const tbody = document.getElementById('students-tbody');
+        if (filteredStudents.length === 0) {
+            const msg = allStudents.length === 0 
+                ? 'No students currently on attachment.' 
+                : currentFilter === 'assigned' 
+                    ? 'No students assigned to you yet.' 
+                    : 'No matching students found.';
+            tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-on-surface-variant">${msg}</td></tr>`;
+            return;
+        }
+        
+        tbody.innerHTML = filteredStudents.map(s => {
+            const initials = s.student_name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            const isAssigned = assignedStudentIds.has(s.attachment_id);
+            const rowClass = isAssigned ? 'assigned-row hover:bg-surface-container-low/50' : 'hover:bg-surface-container-low/50';
+            
+            const statusColors = {
+                'pending': 'bg-yellow-100 text-yellow-800',
+                'active': 'bg-green-100 text-green-800',
+                'completed': 'bg-blue-100 text-blue-800',
+                'rejected': 'bg-red-100 text-red-800'
+            };
+            const statusClass = statusColors[s.status] || 'bg-gray-100 text-gray-800';
+            
+            return `
+                <tr class="${rowClass} transition-colors group">
+                    <td class="p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-sm shrink-0">${initials}</div>
+                            <div>
+                                <div class="font-body-md text-body-md text-on-background font-medium">${s.student_name}</div>
+                                <div class="font-body-md text-[12px] text-on-surface-variant">${s.student_email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4 text-body-md text-on-surface-variant">${s.organization || '-'}</td>
+                    <td class="p-4">
+                        <span class="inline-flex px-2 py-1 rounded-full text-xs font-semibold ${statusClass}">${s.status || 'N/A'}</span>
+                    </td>
+                    <td class="p-4">
+                        ${isAssigned 
+                            ? '<span class="assigned-badge">✓ Assigned to You</span>' 
+                            : '<span class="text-on-surface-variant text-xs">Not assigned</span>'}
+                    </td>
+                    <td class="p-4 text-right">
+    ${isAssigned 
+        ? `<button class="inline-flex items-center justify-center h-8 px-3 border border-secondary text-secondary rounded bg-surface-container-lowest hover:bg-secondary/5 font-label-md text-[12px] transition-colors" onclick="openReview(${s.attachment_id})">Review</button>`
+        : `<button class="inline-flex items-center justify-center h-8 px-3 border border-tertiary text-tertiary rounded bg-surface-container-lowest hover:bg-tertiary-fixed/10 font-label-md text-[12px] transition-colors" onclick="claimStudent(${s.attachment_id})">Select</button>`
+    }
+</td>
+                </tr>
+            `;
+        }).join('');
+        
+        document.getElementById('student-count').textContent = `${filteredStudents.length} students`;
+    }
+
+    // ===== COMPUTE STATS =====
+    async function computeStats(assignedStudents) {
+        let pendingEntries = 0;
+        let commentsGiven = 0;
+
+        for (const s of assignedStudents) {
+            try {
+                const logData = await apiRequest(`/supervisor/logbook/${s.attachment_id}`);
+                logData.entries.forEach(e => {
+                    const myFeedback = (e.feedback || []).filter(f => f.supervisor_id === currentUser.id);
+                    if (myFeedback.length === 0) pendingEntries++;
+                    commentsGiven += myFeedback.length;
+                });
+            } catch (err) { /* skip on error */ }
+        }
+
+        document.getElementById('stat-pending-entries').textContent = pendingEntries;
+        document.getElementById('stat-comments-given').textContent = commentsGiven;
+    }
+
+    // ===== REVIEW FUNCTIONS =====
+    async function claimStudent(attachmentId) {
+    try {
+        await apiRequest(`/supervisor/attachments/${attachmentId}/claim`, { method: 'PATCH' });
+        toast('You are now supervising this student!');
+        init();
+    } catch (err) {
+        toast(err.message, true);
+    }
+}
+    async function openReview(attachmentId) {
+        selectedAttachmentId = attachmentId;
+        const panel = document.getElementById('review-panel');
+        panel.innerHTML = '<p class="text-center py-6 text-on-surface-variant">Loading...</p>';
+
+        try {
+            const [logData, wrData] = await Promise.all([
+                apiRequest(`/supervisor/logbook/${attachmentId}`),
+                apiRequest(`/weekly-reports/attachment/${attachmentId}`),
+            ]);
+
+            const student = allStudents.find(s => s.attachment_id === attachmentId);
+            if (!student) {
+                panel.innerHTML = '<p class="text-center py-6 text-error">Student not found.</p>';
+                return;
+            }
+
+            panel.innerHTML = `
+                <h4 class="font-headline-sm text-headline-sm text-on-background mb-1">${student.student_name}</h4>
+                <p class="text-sm text-on-surface-variant mb-4">${student.organization || 'No organization'} | ${student.department || 'No department'}</p>
+                <div class="space-y-4 max-h-[500px] overflow-y-auto">
+                    <div>
+                        <h5 class="font-label-md text-label-md text-on-surface-variant uppercase mb-2">Logbook Entries</h5>
+                        ${logData.entries.length === 0 ? '<p class="text-sm text-on-surface-variant">No entries yet.</p>' : logData.entries.map(e => `
+                            <div class="border border-outline-variant rounded-lg p-3 mb-2">
+                                <div class="text-xs text-on-surface-variant mb-1">${formatDate(e.entry_date)}</div>
+                                <p class="text-sm text-on-background mb-2">${e.description}</p>
+                                ${(e.feedback || []).map(f => `<div class="bg-surface p-2 rounded text-sm italic mb-1">"${f.comment}"</div>`).join('')}
+                                <div class="flex gap-2 mt-2">
+                                    <input type="text" placeholder="Add feedback..." class="flex-1 border border-outline-variant rounded px-2 py-1 text-sm" id="feedback-input-${e.id}">
+                                    <button class="px-3 py-1 bg-secondary text-white rounded text-sm" onclick="submitFeedback(${e.id})">Send</button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div>
+                        <h5 class="font-label-md text-label-md text-on-surface-variant uppercase mb-2 mt-4">Weekly Reports</h5>
+                        ${wrData.weekly_reports.length === 0 ? '<p class="text-sm text-on-surface-variant">No reports yet.</p>' : wrData.weekly_reports.map(w => `
+                            <div class="border border-outline-variant rounded-lg p-3 mb-2">
+                                <div class="text-xs text-on-surface-variant mb-1">Week ${w.week_number} - ${formatDate(w.week_ending)}</div>
+                                <p class="text-sm text-on-background mb-2">${w.report_text}</p>
+                                ${w.supervisor_comment ? `<div class="bg-surface p-2 rounded text-sm italic mb-1">"${w.supervisor_comment}"</div>` : `
+                                    <div class="flex gap-2 mt-2">
+                                        <input type="text" placeholder="Add comment..." class="flex-1 border border-outline-variant rounded px-2 py-1 text-sm" id="wr-comment-input-${w.id}">
+                                        <button class="px-3 py-1 bg-secondary text-white rounded text-sm" onclick="submitWeeklyComment(${w.id})">Send</button>
+                                    </div>
+                                `}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        } catch (err) {
+            panel.innerHTML = `<p class="text-center py-6 text-error">${err.message}</p>`;
+        }
+    }
+
+    async function submitFeedback(entryId) {
+        const input = document.getElementById(`feedback-input-${entryId}`);
+        const comment = input.value.trim();
+        if (!comment) { toast('Enter a comment first.', true); return; }
+
+        try {
+            await apiRequest('/supervisor/feedback', {
+                method: 'POST',
+                body: { logbook_entry_id: entryId, comment },
+            });
+            toast('Feedback sent!');
+            openReview(selectedAttachmentId);
+            const assignedData = await apiRequest('/supervisor/students');
+            await computeStats(assignedData.assigned_students || []);
+        } catch (err) {
+            toast(err.message, true);
+        }
+    }
+
+    async function submitWeeklyComment(reportId) {
+        const input = document.getElementById(`wr-comment-input-${reportId}`);
+        const comment = input.value.trim();
+        if (!comment) { toast('Enter a comment first.', true); return; }
+
+        try {
+            await apiRequest(`/weekly-reports/${reportId}/comment`, {
+                method: 'PATCH',
+                body: { supervisor_comment: comment },
+            });
+            toast('Comment added!');
+            openReview(selectedAttachmentId);
+        } catch (err) {
+            toast(err.message, true);
+        }
+    }
+</script>
+
+</body></html>

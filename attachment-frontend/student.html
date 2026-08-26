@@ -1,0 +1,459 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Student Dashboard - EduAttach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#44474e",
+                      "on-background": "#191c1e",
+                      "secondary-fixed-dim": "#b0c6ff",
+                      "on-secondary-fixed": "#001945",
+                      "surface-container-low": "#f2f4f6",
+                      "surface": "#f7f9fb",
+                      "background": "#f7f9fb",
+                      "on-surface": "#191c1e",
+                      "on-primary-fixed": "#001b3d",
+                      "on-secondary-fixed-variant": "#00429c",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-container": "#708ab5",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "outline-variant": "#c4c6cf",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#aec7f6",
+                      "tertiary-container": "#122236",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "surface-variant": "#e0e3e5",
+                      "surface-dim": "#d8dadc",
+                      "surface-bright": "#f7f9fb",
+                      "primary": "#000a1e",
+                      "primary-container": "#002147",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "tertiary-fixed": "#d3e4fe",
+                      "secondary-container": "#006df8",
+                      "on-tertiary-container": "#7a8aa2",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "outline": "#74777f",
+                      "inverse-surface": "#2d3133",
+                      "on-secondary-container": "#fefcff",
+                      "secondary": "#0056c6",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#aec7f6",
+                      "secondary-fixed": "#d9e2ff",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "on-error": "#ffffff",
+                      "tertiary": "#000b1b",
+                      "surface-tint": "#465f88",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#e0e3e5",
+                      "primary-fixed": "#d6e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-lg": "32px",
+                      "stack-md": "16px",
+                      "base": "4px",
+                      "sidebar-width": "260px",
+                      "container-padding": "24px",
+                      "stack-sm": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "code-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "code-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface h-full flex antialiased">
+<!-- SideNavBar -->
+<aside class="fixed h-screen w-sidebar-width left-0 top-0 bg-primary dark:bg-primary-container hidden md:flex flex-col h-full py-stack-md z-50">
+<div class="px-container-padding mb-stack-lg">
+<div class="flex items-center gap-stack-sm">
+<div class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-white">EduAttach</h1>
+<p class="font-label-md text-label-md text-on-primary-fixed-variant">Management System</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 overflow-y-auto">
+<!-- Active Tab: Dashboard -->
+<a class="bg-secondary-container text-on-secondary-container font-semibold rounded-lg mx-2 flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-200" href="student.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="placement.html">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body-md text-body-md">Placements</span>
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="logbook.html">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-body-md text-body-md">Logbooks</span>
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="weekly-reports.html">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="evaluations.html">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-body-md text-body-md">Evaluations</span>
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="final-report.html">
+<span class="material-symbols-outlined">upload_file</span>
+<span class="font-body-md text-body-md">Final Report</span>
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="settings.html">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-stack-md border-t border-on-primary-fixed-variant/30 flex flex-col gap-1">
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Help Center</span>
+</a>
+<a class="text-on-primary-fixed-variant hover:text-white mx-2 flex items-center gap-3 px-4 py-3 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="#" onclick="logout(); return false;">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-sidebar-width flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-260px)] h-16 bg-surface dark:bg-surface-dim border-b border-outline-variant flex justify-between items-center px-container-padding z-40">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:block font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">EduAttach</div>
+<div class="relative ml-4 hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary w-64 transition-all" placeholder="Search..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary-fixed hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer hover:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-primary dark:text-primary-fixed hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer hover:opacity-80">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="text-primary dark:text-primary-fixed hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer hover:opacity-80">
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a student in a modern, well-lit academic setting. The student is smiling slightly, wearing smart-casual clothing. The lighting is soft and natural, emphasizing a bright, optimistic light-mode aesthetic with clean white and subtle blue tones in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxm4CunSMyel6FQU3AIZFZgPoYvCbsEfDCXEi0x6Of0-VxRk_qHuSAplvRbYVRuYWhGf6ydxBOcjOomDrlYiIiCTLcJV4j9lmxWINgty66FY9A2Ggv-lZQ6UKuRHzhscgXc9KRrEWakIo12MTwh2w4Vl16jOfLfuv44nDNw1m4gPcEN0ms0zi28lq1-ELWxiTvi7YfEZ2kwd8olCOzthnvp6SiLYhHphgG8ZGzAWGXarnIdCECyj4kZQ">
+</button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2" id="welcome-heading">Welcome back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Here is an overview of your current industrial attachment.</p>
+</div>
+<!-- No Attachment State -->
+<div id="no-attachment-card" class="bg-surface-container-lowest rounded-xl border border-outline-variant p-container-padding text-center" style="display:none;">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">No Attachment Registered Yet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Register your placement details to get started with logbooks and reports.</p>
+<a href="placement.html" class="inline-block bg-secondary text-white font-label-md text-label-md px-5 py-2 rounded-lg hover:bg-secondary-container transition-colors">Register Attachment</a>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter" id="dashboard-grid" style="display:none;">
+<!-- Attachment Details Card (Col Span 8) -->
+<a href="placement.html" class="md:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-container-padding flex flex-col hover:border-secondary transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-stack-md">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary-container">business</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="org-name">-</h3>
+<p class="font-label-md text-label-md text-on-surface-variant" id="org-address">-</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full font-label-md text-label-md" id="attachment-status-badge">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-stack-md mb-stack-md">
+<div><p class="font-label-md text-label-md text-on-surface-variant mb-1">Industrial Supervisor</p><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">person</span><span class="font-body-md text-body-md text-on-surface" id="ind-supervisor-name">Not assigned yet</span></div></div>
+<div><p class="font-label-md text-label-md text-on-surface-variant mb-1">University Supervisor</p><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">school</span><span class="font-body-md text-body-md text-on-surface" id="uni-supervisor-name">Not assigned yet</span></div></div>
+<div><p class="font-label-md text-label-md text-on-surface-variant mb-1">Start Date</p><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_today</span><span class="font-body-md text-body-md text-on-surface" id="start-date-display">-</span></div></div>
+<div><p class="font-label-md text-label-md text-on-surface-variant mb-1">End Date</p><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">event</span><span class="font-body-md text-body-md text-on-surface" id="end-date-display">-</span></div></div>
+</div>
+</a>
+<!-- Progress Tracker (Col Span 4) -->
+<div class="md:col-span-4 bg-primary-container rounded-xl p-container-padding flex flex-col justify-between text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+<div class="relative z-10">
+<h3 class="font-headline-sm text-headline-sm mb-1">Overall Progress</h3>
+<p class="font-label-md text-label-md text-primary-fixed-dim opacity-80 mb-stack-lg" id="progress-program-label">- Week Program</p>
+<div class="flex items-end gap-2 mb-2">
+<span class="font-display-lg text-display-lg font-bold" id="progress-week-num">0</span>
+<span class="font-body-lg text-body-lg text-primary-fixed-dim pb-1" id="progress-week-total">/ 0 Weeks</span>
+</div>
+<div class="w-full bg-on-primary-fixed-variant/30 rounded-full h-2.5 mb-2 overflow-hidden">
+<div class="bg-secondary-fixed h-2.5 rounded-full" id="progress-bar-fill" style="width: 0%"></div>
+</div>
+<p class="font-label-md text-label-md text-right text-primary-fixed-dim" id="progress-pct-label">0% Completed</p>
+<p class="font-label-md text-label-md text-primary-fixed-dim opacity-70 mt-2" id="progress-breakdown"></p>
+</div>
+</div>
+<!-- Logbook Shortcut (Col Span 6) -->
+<div class="md:col-span-6 bg-surface-container-lowest rounded-xl border border-outline-variant p-container-padding">
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">edit_note</span>
+                            Recent Logbooks
+                        </h3>
+<a href="logbook.html" class="font-label-md text-label-md text-secondary hover:underline">View All</a>
+</div>
+<div class="space-y-3" id="recent-logbooks-list">
+<p class="font-body-md text-body-md text-on-surface-variant">No entries yet.</p>
+</div>
+<a href="logbook.html" class="w-full mt-stack-md bg-secondary text-white font-label-md text-label-md py-2 rounded-lg hover:bg-secondary/90 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Entry
+                    </a>
+</div>
+<!-- Supervisor Feedback (Col Span 6) -->
+<div class="md:col-span-6 bg-surface-container-lowest rounded-xl border border-outline-variant p-container-padding">
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">forum</span>
+                            Latest Feedback
+                        </h3>
+</div>
+<div id="feedback-list">
+<p class="font-body-md text-body-md text-on-surface-variant">No feedback yet.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+
+<script src="js/api.js"></script>
+<script>
+    const currentUser = requireAuth(['student']);
+    document.getElementById('welcome-heading').textContent = `Welcome back, ${currentUser.name.split(' ')[0]}`;
+
+    let myAttachment = null;
+
+    async function init() {
+      try {
+        const data = await apiRequest('/attachments/me');
+        if (data.attachments.length === 0) {
+          document.getElementById('no-attachment-card').style.display = 'block';
+          document.getElementById('dashboard-grid').style.display = 'none';
+          return;
+        }
+        myAttachment = data.attachments[0];
+        document.getElementById('no-attachment-card').style.display = 'none';
+        document.getElementById('dashboard-grid').style.display = 'grid';
+
+        renderAttachment(myAttachment);
+        await Promise.all([loadRecentLogbooks(), loadFeedback(), loadProgress()]);
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    function renderAttachment(a) {
+      document.getElementById('org-name').textContent = a.organization_name;
+      document.getElementById('org-address').textContent = a.organization_address || '';
+      document.getElementById('attachment-status-badge').textContent = a.status;
+      document.getElementById('start-date-display').textContent = formatDate(a.start_date);
+      document.getElementById('end-date-display').textContent = formatDate(a.end_date);
+      if (a.industrial_supervisor_name) document.getElementById('ind-supervisor-name').textContent = a.industrial_supervisor_name;
+      if (a.university_supervisor_name) document.getElementById('uni-supervisor-name').textContent = a.university_supervisor_name;
+    }
+
+    async function loadRecentLogbooks() {
+      try {
+        const data = await apiRequest('/logbook/me');
+        const list = document.getElementById('recent-logbooks-list');
+        if (data.entries.length === 0) {
+          list.innerHTML = '<p class="font-body-md text-body-md text-on-surface-variant">No entries yet.</p>';
+          return;
+        }
+        list.innerHTML = data.entries.slice(0, 3).map(e => `
+          <div class="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-outline-variant hover:bg-surface-container-low transition-colors">
+            <div class="w-10 h-10 rounded bg-secondary-fixed text-on-secondary-fixed-variant flex items-center justify-center font-bold font-label-md shrink-0">${new Date(e.entry_date).getDate()}</div>
+            <div>
+              <p class="font-body-md text-body-md font-semibold text-on-surface">${e.description.substring(0, 60)}${e.description.length > 60 ? '...' : ''}</p>
+              <p class="font-label-md text-label-md text-on-surface-variant">${formatDate(e.entry_date)}</p>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    async function loadFeedback() {
+      try {
+        const wr = await apiRequest('/weekly-reports/me');
+        const commented = wr.weekly_reports.filter(w => w.supervisor_comment);
+        const list = document.getElementById('feedback-list');
+        if (commented.length === 0) {
+          list.innerHTML = '<p class="font-body-md text-body-md text-on-surface-variant">No feedback yet.</p>';
+          return;
+        }
+        list.innerHTML = commented.slice(0, 3).map((w, i) => `
+          <div class="border-l-2 border-outline-variant pl-4 py-1 ${i < commented.length - 1 ? 'mb-4' : ''} relative">
+            <div class="absolute w-3 h-3 bg-white border-2 border-primary-container rounded-full -left-[7px] top-2"></div>
+            <div class="mb-1 flex items-center gap-2">
+              <span class="font-label-md text-label-md font-bold text-on-surface">Week ${w.week_number} Review</span>
+              <span class="font-label-md text-label-md text-on-surface-variant text-xs">${timeAgo(w.commented_at)}</span>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant italic">"${w.supervisor_comment}"</p>
+          </div>
+        `).join('');
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    async function loadProgress() {
+      try {
+        const start = new Date(myAttachment.start_date);
+        const end = new Date(myAttachment.end_date);
+        const totalWeeks = Math.max(1, Math.round((end - start) / (7 * 86400000)));
+
+        const [logbookData, weeklyData] = await Promise.all([
+          apiRequest('/logbook/me'),
+          apiRequest('/weekly-reports/me'),
+        ]);
+
+        const weeksWithEntries = new Set();
+        logbookData.entries.forEach(e => {
+          const entryDate = new Date(e.entry_date);
+          const weekIndex = Math.floor((entryDate - start) / (7 * 86400000));
+          if (weekIndex >= 0 && weekIndex < totalWeeks) weeksWithEntries.add(weekIndex);
+        });
+
+        const reportsSubmitted = new Set(weeklyData.weekly_reports.map(w => w.week_number)).size;
+
+        const logbookRatio = weeksWithEntries.size / totalWeeks;
+        const reportsRatio = Math.min(reportsSubmitted, totalWeeks) / totalWeeks;
+        const overallPct = Math.round(((logbookRatio + reportsRatio) / 2) * 100);
+        const weeksElapsed = Math.max(weeksWithEntries.size, reportsSubmitted);
+
+        document.getElementById('progress-program-label').textContent = `${totalWeeks} Week Program`;
+        document.getElementById('progress-week-num').textContent = weeksElapsed;
+        document.getElementById('progress-week-total').textContent = `/ ${totalWeeks} Weeks`;
+        document.getElementById('progress-bar-fill').style.width = `${Math.min(overallPct, 100)}%`;
+        document.getElementById('progress-pct-label').textContent = `${Math.min(overallPct, 100)}% Completed`;
+        document.getElementById('progress-breakdown').textContent =
+          `${weeksWithEntries.size}/${totalWeeks} weeks logged - ${reportsSubmitted}/${totalWeeks} reports submitted`;
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    init();
+</script>
+
+</body></html>

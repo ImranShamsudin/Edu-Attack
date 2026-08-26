@@ -1,0 +1,143 @@
+<!DOCTYPE html><html class="h-full bg-background antialiased" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EduAttach - Student Activity Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#44474e", "on-surface": "#191c1e",
+                        "surface-container-low": "#f2f4f6", "surface": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#000a1e", "primary-container": "#002147",
+                        "secondary-container": "#006df8", "error-container": "#ffdad6",
+                        "on-error-container": "#93000a", "outline-variant": "#c4c6cf",
+                        "secondary": "#0056c6", "tertiary-fixed": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#38485d", "error": "#ba1a1a"
+                    },
+                    "fontFamily": { "body-md": ["Inter"], "headline-md": ["Inter"], "headline-sm": ["Inter"], "label-md": ["Inter"], "display-lg": ["Inter"] },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+</script>
+</head>
+<body class="bg-surface-container-low text-on-surface min-h-screen">
+<div class="max-w-6xl mx-auto p-6">
+
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Student Activity Report</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Who has started their attachment, who hasn't, and who has never logged in.</p>
+</div>
+<div class="flex gap-3">
+<a href="admin.html" class="font-label-md text-label-md text-secondary hover:underline self-center">&larr; Back to Dashboard</a>
+<button id="download-btn" class="px-4 py-2 bg-secondary text-white rounded-lg font-label-md text-label-md hover:bg-secondary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span> Download CSV
+</button>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+<div class="bg-white rounded-xl border border-outline-variant">
+<div class="p-4 border-b border-outline-variant bg-tertiary-fixed">
+<h3 class="font-headline-sm text-headline-sm text-on-tertiary-fixed-variant">Started (<span id="count-started">0</span>)</h3>
+</div>
+<div id="list-started" class="p-4 space-y-3 max-h-[500px] overflow-y-auto"></div>
+</div>
+
+<div class="bg-white rounded-xl border border-outline-variant">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Not Started (<span id="count-not-started">0</span>)</h3>
+</div>
+<div id="list-not-started" class="p-4 space-y-3 max-h-[500px] overflow-y-auto"></div>
+</div>
+
+<div class="bg-white rounded-xl border border-outline-variant">
+<div class="p-4 border-b border-outline-variant bg-error-container">
+<h3 class="font-headline-sm text-headline-sm text-on-error-container">Never Logged In (<span id="count-never">0</span>)</h3>
+</div>
+<div id="list-never" class="p-4 space-y-3 max-h-[500px] overflow-y-auto"></div>
+</div>
+
+</div>
+</div>
+
+<script src="js/api.js"></script>
+<script>
+    const currentUser = requireAuth(['admin']);
+
+    async function init() {
+        try {
+            const data = await apiRequest('/admin/reports/activity');
+
+            document.getElementById('count-started').textContent = data.started.length;
+            document.getElementById('count-not-started').textContent = data.not_started.length;
+            document.getElementById('count-never').textContent = data.never_logged_in.length;
+
+            document.getElementById('list-started').innerHTML = data.started.length === 0
+                ? '<p class="text-on-surface-variant text-sm">None yet.</p>'
+                : data.started.map(s => `
+                    <div class="border-b border-outline-variant/50 pb-2">
+                        <p class="font-body-md text-body-md text-on-surface font-medium">${s.name}</p>
+                        <p class="text-xs text-on-surface-variant">${s.organization}${s.semester ? ' - ' + s.semester : ''}</p>
+                        <p class="text-xs text-on-surface-variant">Last login: ${s.last_login ? formatDate(s.last_login) : 'Never'}</p>
+                    </div>
+                `).join('');
+
+            document.getElementById('list-not-started').innerHTML = data.not_started.length === 0
+                ? '<p class="text-on-surface-variant text-sm">Everyone has started.</p>'
+                : data.not_started.map(s => `
+                    <div class="border-b border-outline-variant/50 pb-2">
+                        <p class="font-body-md text-body-md text-on-surface font-medium">${s.name}</p>
+                        <p class="text-xs text-on-surface-variant">${s.email}</p>
+                        <p class="text-xs text-on-surface-variant">Last login: ${s.last_login ? formatDate(s.last_login) : 'Never'}</p>
+                    </div>
+                `).join('');
+
+            document.getElementById('list-never').innerHTML = data.never_logged_in.length === 0
+                ? '<p class="text-on-surface-variant text-sm">Everyone has logged in at least once.</p>'
+                : data.never_logged_in.map(s => `
+                    <div class="border-b border-outline-variant/50 pb-2">
+                        <p class="font-body-md text-body-md text-on-surface font-medium">${s.name}</p>
+                        <p class="text-xs text-on-surface-variant">${s.email}</p>
+                        <p class="text-xs text-on-surface-variant">Registered ${formatDate(s.created_at)}</p>
+                    </div>
+                `).join('');
+        } catch (err) {
+            toast(err.message, true);
+        }
+    }
+
+    document.getElementById('download-btn').addEventListener('click', async () => {
+        try {
+            const res = await fetch(`${API_BASE}/admin/reports/activity/export`, {
+                headers: { Authorization: `Bearer ${getToken()}` },
+            });
+            if (!res.ok) throw new Error('Failed to generate report');
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'student_activity_report.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        } catch (err) {
+            toast(err.message, true);
+        }
+    });
+
+    init();
+</script>
+
+</body></html>
