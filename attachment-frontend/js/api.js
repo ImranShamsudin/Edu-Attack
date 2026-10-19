@@ -6,11 +6,10 @@
 // - Opened through the backend (http://localhost:5000/...)  -> same origin, nothing to configure.
 // - Opened any other way (Live Server, file://, another port) -> talks to http://localhost:5000.
 // - To point somewhere else, define  window.API_BASE = 'https://your-api'  BEFORE loading this file.
+ // ===== API CONFIG =====
 const API_BASE = (typeof window !== 'undefined' && window.API_BASE)
   ? window.API_BASE
-  : (window.location.protocol.startsWith('http') && window.location.port === '5000'
-      ? window.location.origin
-      : 'http://localhost:5000');
+  : window.location.origin;
 
 // ===== SAFE OUTPUT =====
 // Every value that comes from the database or from a user MUST go through esc() before it is
