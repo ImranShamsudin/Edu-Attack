@@ -1,0 +1,247 @@
+<!DOCTYPE html><html class="h-full bg-background antialiased" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EduAttach - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#44474e",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#b0c6ff",
+                        "on-secondary-fixed": "#001945",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed": "#001b3d",
+                        "on-secondary-fixed-variant": "#00429c",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#708ab5",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#aec7f6",
+                        "tertiary-container": "#122236",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#000a1e",
+                        "primary-container": "#002147",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "tertiary-fixed": "#d3e4fe",
+                        "secondary-container": "#006df8",
+                        "on-tertiary-container": "#7a8aa2",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "outline": "#74777f",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-container": "#fefcff",
+                        "secondary": "#0056c6",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#aec7f6",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000b1b",
+                        "surface-tint": "#465f88",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "base": "4px",
+                        "sidebar-width": "260px",
+                        "container-padding": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "code-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .role-card-active {
+            border-color: #006df8;
+            background-color: #f7f9fb;
+        }
+        .role-card-active .icon-container {
+            background-color: #006df8;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="h-full w-full flex bg-surface-container-lowest text-on-surface">
+<main class="w-full h-full min-h-screen grid md:grid-cols-2 bg-surface-container-lowest overflow-hidden">
+<div class="hidden md:flex flex-col justify-between p-stack-lg bg-primary-container text-on-primary">
+<div>
+<div class="flex items-center gap-stack-sm mb-stack-lg">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">manage_accounts</span>
+<h1 class="font-headline-md text-headline-md tracking-tight">EduAttach</h1>
+</div>
+<h2 class="font-display-lg text-display-lg mb-stack-md leading-tight">Account Settings</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container max-w-sm">
+                    Update your profile details or change your password.
+                </p>
+</div>
+</div>
+<div class="p-stack-lg flex flex-col justify-center bg-surface-container-lowest overflow-y-auto">
+<div class="w-full max-w-md mx-auto">
+
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Profile</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md" id="role-display"></p>
+
+<div id="profile-error" style="display:none;" class="mb-stack-md p-3 rounded-lg bg-error-container text-on-error-container font-body-md text-body-md"></div>
+
+<form class="space-y-stack-md mb-stack-lg" id="profile-form">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base" for="profile-name">Full Name</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT focus:ring-1 focus:ring-secondary focus:border-secondary font-body-md text-body-md bg-surface text-on-surface outline-none" id="profile-name" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base">Email (cannot be changed)</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-md text-body-md bg-surface-container-low text-on-surface-variant outline-none" id="profile-email" type="email" disabled>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base" for="profile-phone">Phone</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT focus:ring-1 focus:ring-secondary focus:border-secondary font-body-md text-body-md bg-surface text-on-surface outline-none" id="profile-phone" type="tel">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base" for="profile-department">Department</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT focus:ring-1 focus:ring-secondary focus:border-secondary font-body-md text-body-md bg-surface text-on-surface outline-none" id="profile-department" type="text">
+</div>
+<button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm font-label-md text-label-md text-on-primary bg-secondary hover:bg-secondary-container transition-colors" type="submit">
+                        Save Profile
+                    </button>
+</form>
+
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1 pt-stack-md border-t border-outline-variant">Change Password</h2>
+<div id="password-error" style="display:none;" class="mb-stack-md mt-stack-sm p-3 rounded-lg bg-error-container text-on-error-container font-body-md text-body-md"></div>
+<form class="space-y-stack-md mt-stack-sm" id="password-form">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base" for="settings-current-password">Current Password</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT focus:ring-1 focus:ring-secondary focus:border-secondary font-body-md text-body-md bg-surface text-on-surface outline-none" id="settings-current-password" type="password">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base" for="settings-new-password">New Password</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT focus:ring-1 focus:ring-secondary focus:border-secondary font-body-md text-body-md bg-surface text-on-surface outline-none" id="settings-new-password" minlength="8" type="password">
+</div>
+<button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm font-label-md text-label-md text-on-primary bg-secondary hover:bg-secondary-container transition-colors" type="submit">
+                        Update Password
+                    </button>
+</form>
+
+<div class="mt-stack-lg text-center">
+<a class="font-label-md text-label-md text-secondary hover:text-secondary-container transition-colors" href="#" id="back-link">&larr; Back to Dashboard</a>
+</div>
+</div>
+</div>
+</main>
+
+<script src="js/api.js"></script>
+<script>
+    const currentUser = requireAuth();
+    document.getElementById('role-display').textContent = roleLabel(currentUser.role);
+    document.getElementById('back-link').href = roleHomePage(currentUser.role);
+
+    document.getElementById('profile-name').value = currentUser.name || '';
+    document.getElementById('profile-email').value = currentUser.email || '';
+    document.getElementById('profile-phone').value = currentUser.phone || '';
+    document.getElementById('profile-department').value = currentUser.department || '';
+
+    document.getElementById('profile-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorBox = document.getElementById('profile-error');
+        errorBox.style.display = 'none';
+
+        try {
+            const data = await apiRequest('/auth/profile', {
+                method: 'PATCH',
+                body: {
+                    name: document.getElementById('profile-name').value.trim(),
+                    phone: document.getElementById('profile-phone').value.trim(),
+                    department: document.getElementById('profile-department').value.trim(),
+                },
+            });
+            const updatedUser = { ...currentUser, ...data.user };
+            saveSession(getToken(), updatedUser);
+            toast('Profile updated!');
+        } catch (err) {
+            errorBox.textContent = err.message;
+            errorBox.style.display = 'block';
+        }
+    });
+
+    document.getElementById('password-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorBox = document.getElementById('password-error');
+        errorBox.style.display = 'none';
+
+        const currentPassword = document.getElementById('settings-current-password').value;
+        const newPassword = document.getElementById('settings-new-password').value;
+
+        if (newPassword && newPassword.length < 8) {
+            errorBox.textContent = 'New password must be at least 8 characters.';
+            errorBox.style.display = 'block';
+            return;
+        }
+        if (!currentPassword || !newPassword) {
+            errorBox.textContent = 'Both fields are required.';
+            errorBox.style.display = 'block';
+            return;
+        }
+
+        try {
+            await apiRequest('/auth/change-password', {
+                method: 'POST',
+                body: { current_password: currentPassword, new_password: newPassword },
+            });
+            toast('Password updated!');
+            document.getElementById('password-form').reset();
+        } catch (err) {
+            errorBox.textContent = err.message;
+            errorBox.style.display = 'block';
+        }
+    });
+</script>
+
+</body></html>

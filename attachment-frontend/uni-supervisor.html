@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduAttach - University Supervisor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#44474e",
+                      "on-background": "#191c1e",
+                      "secondary-fixed-dim": "#b0c6ff",
+                      "on-secondary-fixed": "#001945",
+                      "surface-container-low": "#f2f4f6",
+                      "surface": "#f7f9fb",
+                      "background": "#f7f9fb",
+                      "on-surface": "#191c1e",
+                      "on-primary-fixed": "#001b3d",
+                      "on-secondary-fixed-variant": "#00429c",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-container": "#708ab5",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "outline-variant": "#c4c6cf",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#aec7f6",
+                      "tertiary-container": "#122236",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "surface-variant": "#e0e3e5",
+                      "surface-dim": "#d8dadc",
+                      "surface-bright": "#f7f9fb",
+                      "primary": "#000a1e",
+                      "primary-container": "#002147",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "tertiary-fixed": "#d3e4fe",
+                      "secondary-container": "#006df8",
+                      "on-tertiary-container": "#7a8aa2",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "outline": "#74777f",
+                      "inverse-surface": "#2d3133",
+                      "on-secondary-container": "#fefcff",
+                      "secondary": "#0056c6",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#aec7f6",
+                      "secondary-fixed": "#d9e2ff",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "on-error": "#ffffff",
+                      "tertiary": "#000b1b",
+                      "surface-tint": "#465f88",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#e0e3e5",
+                      "primary-fixed": "#d6e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-lg": "32px",
+                      "stack-md": "16px",
+                      "base": "4px",
+                      "sidebar-width": "260px",
+                      "container-padding": "24px",
+                      "stack-sm": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "code-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "code-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-primary dark:bg-primary-container text-secondary-fixed font-body-md text-body-md fixed h-screen w-sidebar-width left-0 top-0 flex-col h-full py-stack-md z-50">
+<div class="px-container-padding pb-stack-lg border-b border-primary-container">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white">school</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-white">EduAttach</h1>
+<p class="font-label-md text-label-md text-on-primary-fixed-variant">Management System</p>
+</div>
+</div>
+
+</div>
+<div class="flex-1 overflow-y-auto py-stack-md flex flex-col gap-base px-2">
+<a class="flex items-center gap-stack-sm p-3 bg-secondary-container text-on-secondary-container font-semibold rounded-lg mx-2 cursor-pointer transition-all duration-200" href="uni-supervisor.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-sm p-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="#" onclick="scrollToSection('section-students'); return false;">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">groups</span>
+<span>Assigned Students</span>
+</a>
+<a class="flex items-center gap-stack-sm p-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="#" onclick="scrollToSection('section-logbook'); return false;">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">edit_note</span>
+<span>Logbook Review</span>
+</a>
+<a class="flex items-center gap-stack-sm p-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="#" onclick="scrollToSection('section-visits'); return false;">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">description</span>
+<span>Visit Reports</span>
+</a>
+
+<a class="flex items-center gap-stack-sm p-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="settings.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mt-auto px-2 border-t border-primary-container pt-stack-md flex flex-col gap-base">
+
+<a class="flex items-center gap-stack-sm p-3 text-on-primary-fixed-variant hover:text-white mx-2 hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer transition-all duration-200" href="#" onclick="logout(); return false;">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-sidebar-width flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed font-label-md text-label-md fixed top-0 right-0 w-full md:w-[calc(100%-260px)] h-16 border-b border-outline-variant flex justify-between items-center px-container-padding z-40">
+<div class="flex items-center gap-stack-md">
+<button data-menu-toggle aria-label="Open menu" class="md:hidden block p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="hidden md:block font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">EduAttach</span>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div></div>
+<div class="flex items-center gap-stack-sm">
+
+
+<button onclick="location.href='settings.html'" title="Account settings" class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer hover:opacity-80 ml-2">
+<div class="w-full h-full  flex items-center justify-center bg-primary-container text-white text-xs font-bold" data-user-initials></div>
+</button>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-container-padding">
+<div class="max-w-7xl mx-auto space-y-stack-lg">
+<section>
+<div class="mb-stack-md">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Overview</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Your assigned students and visit evaluation status.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="p-2 bg-primary-fixed/30 text-on-primary-fixed rounded-lg w-fit mb-3">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-total-students">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Students Supervised</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="p-2 bg-error-container text-on-error-container rounded-lg w-fit mb-3">
+<span class="material-symbols-outlined">event_busy</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-visits-pending">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Visits Not Yet Recorded</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="p-2 bg-secondary-fixed/50 text-on-secondary-fixed rounded-lg w-fit mb-3">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-reports-pending">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Weekly Reports Pending</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding">
+<div class="p-2 bg-tertiary-fixed/50 text-on-tertiary-fixed rounded-lg w-fit mb-3">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-background" id="stat-visits-done">-</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Visits Completed</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<section class="lg:col-span-2 space-y-stack-md" id="section-students">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Assigned Students</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Student</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Organization</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Semester</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Period</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant" id="students-tbody">
+<tr><td colspan="5" class="p-6 text-center text-on-surface-variant">Loading...</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="space-y-stack-md">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Review Panel</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4" id="review-panel">
+<p class="font-body-md text-body-md text-on-surface-variant text-center py-6">Select a student to record a visit or review their reports.</p>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+<script src="js/api.js"></script>
+<script>
+    const currentUser = requireAuth(['university_supervisor']);
+    const $ = (id) => document.getElementById(id);
+    let assignedStudents = [];
+
+    function scrollToSection(sectionId) {
+      const el = $(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else if (sectionId !== 'review-panel') toast('Select a student to review first.', true);
+    }
+
+    async function init() {
+      try {
+        const data = await apiRequest('/supervisor/students');
+        assignedStudents = data.assigned_students;
+        renderStudentsTable();
+        await computeStats();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    function renderStudentsTable() {
+      const tbody = $('students-tbody');
+      if (assignedStudents.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="p-6 text-center text-on-surface-variant">No students assigned yet. The coordinator assigns students to you.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = assignedStudents.map((s) => `
+        <tr class="hover:bg-surface-container-low/50 transition-colors">
+          <td class="p-4">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-sm shrink-0">${esc(initials(s.student_name))}</div>
+              <div>
+                <div class="font-body-md text-body-md text-on-background font-medium">${esc(s.student_name)}</div>
+                <div class="font-body-md text-[12px] text-on-surface-variant">${esc(s.student_email)}</div>
+              </div>
+            </div>
+          </td>
+          <td class="p-4 text-body-md text-on-surface-variant">${esc(s.organization)}</td>
+          <td class="p-4 text-body-md text-on-surface-variant">${esc(s.semester || '-')}</td>
+          <td class="p-4 text-body-md text-on-surface-variant">${esc(formatDate(s.start_date))} - ${esc(formatDate(s.end_date))}<div class="mt-1">${statusBadge(s.status)}</div></td>
+          <td class="p-4 text-right">
+            <button class="inline-flex items-center justify-center h-8 px-3 border border-secondary text-secondary rounded bg-surface-container-lowest hover:bg-secondary/5 font-label-md text-[12px] transition-colors" data-review="${esc(s.attachment_id)}">Review</button>
+          </td>
+        </tr>`).join('');
+    }
+
+    async function computeStats() {
+      $('stat-total-students').textContent = assignedStudents.length;
+      const results = await Promise.all(assignedStudents.map((s) => Promise.all([
+        apiRequest(`/supervisor/visits/${s.attachment_id}`).catch(() => ({ visits: [] })),
+        apiRequest(`/weekly-reports/attachment/${s.attachment_id}`).catch(() => ({ weekly_reports: [] })),
+      ])));
+      let visitsDone = 0;
+      let reportsPending = 0;
+      results.forEach(([visits, reports]) => {
+        visitsDone += visits.visits.length;
+        reportsPending += reports.weekly_reports.filter((w) => !w.supervisor_comment).length;
+      });
+      $('stat-visits-pending').textContent = assignedStudents.length * 2 - visitsDone;
+      $('stat-visits-done').textContent = visitsDone;
+      $('stat-reports-pending').textContent = reportsPending;
+    }
+
+    async function openReview(attachmentId) {
+      const panel = $('review-panel');
+      panel.innerHTML = '<p class="text-center py-6 text-on-surface-variant">Loading...</p>';
+      try {
+        const [visitsData, wrData, logData] = await Promise.all([
+          apiRequest(`/supervisor/visits/${attachmentId}`),
+          apiRequest(`/weekly-reports/attachment/${attachmentId}`),
+          apiRequest(`/supervisor/logbook/${attachmentId}`),
+        ]);
+        const student = assignedStudents.find((s) => s.attachment_id === attachmentId);
+        const canVisit = student && ['active', 'completed'].includes(student.status);
+
+        const visitBlock = (visit, num) => {
+          if (visit) {
+            return `
+              <div class="border border-outline-variant rounded-lg p-3 mb-2">
+                <div class="flex justify-between text-xs text-on-surface-variant mb-1">
+                  <span class="font-bold text-primary">Visit ${num} - Recorded</span>
+                  <span>${esc(formatDate(visit.visit_date))}</span>
+                </div>
+                <p class="text-sm text-on-background whitespace-pre-line">${esc(visit.comments)}</p>
+              </div>`;
+          }
+          if (!canVisit) {
+            return `<div class="border border-dashed border-outline-variant rounded-lg p-3 mb-2 text-sm text-on-surface-variant">Visit ${num} can be recorded once the placement is approved.</div>`;
+          }
+          return `
+            <div class="border border-dashed border-outline-variant rounded-lg p-3 mb-2">
+              <div class="font-bold text-sm text-on-background mb-2">Record Visit ${num}</div>
+              <input type="date" max="${esc(todayIso())}" class="w-full border border-outline-variant rounded px-2 py-1 text-sm mb-2" id="visit-date-${num}-${esc(attachmentId)}">
+              <textarea maxlength="3000" placeholder="Evaluation comments..." class="w-full border border-outline-variant rounded px-2 py-1 text-sm mb-2" rows="2" id="visit-comment-${num}-${esc(attachmentId)}"></textarea>
+              <button class="px-3 py-1 bg-secondary text-white rounded text-sm" data-visit="${num}" data-attachment="${esc(attachmentId)}">Save Visit ${num}</button>
+            </div>`;
+        };
+
+        panel.innerHTML = `
+          <h4 class="font-headline-sm text-headline-sm text-on-background mb-3">${esc(student ? student.student_name : 'Student')}</h4>
+          <div class="space-y-4 max-h-[500px] overflow-y-auto">
+            <div id="section-logbook">
+              <h5 class="font-label-md text-label-md text-on-surface-variant uppercase mb-2">Logbook Entries</h5>
+              ${logData.entries.length === 0 ? '<p class="text-sm text-on-surface-variant">No entries yet.</p>' : logData.entries.map((e) => `
+                <div class="border border-outline-variant rounded-lg p-3 mb-2">
+                  <div class="text-xs text-on-surface-variant mb-1">${esc(formatDate(e.entry_date))}</div>
+                  <p class="text-sm text-on-background mb-2 whitespace-pre-line">${esc(e.description)}</p>
+                  ${(e.feedback || []).map((f) => `<div class="bg-surface p-2 rounded text-sm italic mb-1">"${esc(f.comment)}"</div>`).join('')}
+                  <div class="flex gap-2 mt-2">
+                    <input type="text" maxlength="1000" placeholder="Add feedback..." class="flex-1 border border-outline-variant rounded px-2 py-1 text-sm" id="feedback-input-${esc(e.id)}">
+                    <button class="px-3 py-1 bg-secondary text-white rounded text-sm" data-feedback="${esc(e.id)}" data-attachment="${esc(attachmentId)}">Send</button>
+                  </div>
+                </div>`).join('')}
+            </div>
+            <div id="section-visits">
+              <h5 class="font-label-md text-label-md text-on-surface-variant uppercase mb-2 mt-4">University Supervisor Visits</h5>
+              ${visitBlock(visitsData.visits.find((v) => v.visit_number === 1), 1)}
+              ${visitBlock(visitsData.visits.find((v) => v.visit_number === 2), 2)}
+            </div>
+            <div id="section-reports">
+              <h5 class="font-label-md text-label-md text-on-surface-variant uppercase mb-2 mt-4">Weekly Reports</h5>
+              ${wrData.weekly_reports.length === 0 ? '<p class="text-sm text-on-surface-variant">No reports yet.</p>' : wrData.weekly_reports.map((w) => `
+                <div class="border border-outline-variant rounded-lg p-3 mb-2">
+                  <div class="text-xs text-on-surface-variant mb-1">Week ${esc(w.week_number)} - ${esc(formatDate(w.week_ending))}</div>
+                  <p class="text-sm text-on-background mb-2 whitespace-pre-line">${esc(w.report_text)}</p>
+                  ${w.supervisor_comment ? `<div class="bg-surface p-2 rounded text-sm italic mb-1">"${esc(w.supervisor_comment)}"</div>` : `
+                    <div class="flex gap-2 mt-2">
+                      <input type="text" maxlength="1000" placeholder="Add comment..." class="flex-1 border border-outline-variant rounded px-2 py-1 text-sm" id="wr-comment-input-${esc(w.id)}">
+                      <button class="px-3 py-1 bg-secondary text-white rounded text-sm" data-wr-comment="${esc(w.id)}" data-attachment="${esc(attachmentId)}">Send</button>
+                    </div>`}
+                </div>`).join('')}
+            </div>
+          </div>`;
+      } catch (err) {
+        panel.innerHTML = `<p class="text-center py-6 text-error">${esc(err.message)}</p>`;
+      }
+    }
+
+    async function submitEntryFeedback(entryId, attachmentId) {
+      const comment = $(`feedback-input-${entryId}`).value.trim();
+      if (!comment) { toast('Enter a comment first.', true); return; }
+      try {
+        await apiRequest('/supervisor/feedback', { method: 'POST', body: { logbook_entry_id: Number(entryId), comment } });
+        toast('Feedback sent!');
+        openReview(attachmentId);
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    async function submitVisit(attachmentId, visitNumber) {
+      const date = $(`visit-date-${visitNumber}-${attachmentId}`).value;
+      const comments = $(`visit-comment-${visitNumber}-${attachmentId}`).value.trim();
+      if (!date || !comments) { toast('Fill in both date and comments.', true); return; }
+      try {
+        await apiRequest('/supervisor/visit', {
+          method: 'POST',
+          body: { attachment_id: Number(attachmentId), visit_number: Number(visitNumber), comments, visit_date: date },
+        });
+        toast(`Visit ${visitNumber} recorded!`);
+        openReview(Number(attachmentId));
+        computeStats();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    async function submitWeeklyComment(reportId, attachmentId) {
+      const comment = $(`wr-comment-input-${reportId}`).value.trim();
+      if (!comment) { toast('Enter a comment first.', true); return; }
+      try {
+        await apiRequest(`/weekly-reports/${reportId}/comment`, { method: 'PATCH', body: { supervisor_comment: comment } });
+        toast('Comment added!');
+        openReview(Number(attachmentId));
+        computeStats();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      const t = e.target.closest('[data-review],[data-feedback],[data-visit],[data-wr-comment]');
+      if (!t) return;
+      if (t.dataset.review) openReview(Number(t.dataset.review));
+      else if (t.dataset.feedback) submitEntryFeedback(t.dataset.feedback, Number(t.dataset.attachment));
+      else if (t.dataset.visit) submitVisit(t.dataset.attachment, t.dataset.visit);
+      else if (t.dataset.wrComment) submitWeeklyComment(t.dataset.wrComment, t.dataset.attachment);
+    });
+
+    if (currentUser) init();
+    </script>
+
+</body></html>

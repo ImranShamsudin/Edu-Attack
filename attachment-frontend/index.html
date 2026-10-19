@@ -1,0 +1,266 @@
+<!DOCTYPE html><html class="h-full bg-background antialiased" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EduAttach - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#44474e",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#b0c6ff",
+                        "on-secondary-fixed": "#001945",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed": "#001b3d",
+                        "on-secondary-fixed-variant": "#00429c",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#708ab5",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#aec7f6",
+                        "tertiary-container": "#122236",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#000a1e",
+                        "primary-container": "#002147",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "tertiary-fixed": "#d3e4fe",
+                        "secondary-container": "#006df8",
+                        "on-tertiary-container": "#7a8aa2",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "outline": "#74777f",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-container": "#fefcff",
+                        "secondary": "#0056c6",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#aec7f6",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000b1b",
+                        "surface-tint": "#465f88",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "base": "4px",
+                        "sidebar-width": "260px",
+                        "container-padding": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "code-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .role-card-active {
+            border-color: #006df8;
+            background-color: #f7f9fb;
+        }
+        .role-card-active .icon-container {
+            background-color: #006df8;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="h-full w-full flex bg-surface-container-lowest text-on-surface">
+<main class="w-full h-full min-h-screen grid md:grid-cols-2 bg-surface-container-lowest overflow-hidden">
+<!-- Branding/Info Section (Hidden on Mobile) -->
+<div class="hidden md:flex flex-col justify-between p-stack-lg bg-primary-container text-on-primary">
+<div>
+<div class="flex items-center gap-stack-sm mb-stack-lg">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">school</span>
+<h1 class="font-headline-md text-headline-md tracking-tight">EduAttach</h1>
+</div>
+<h2 class="font-display-lg text-display-lg mb-stack-md leading-tight">Attachment Management System</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container max-w-sm">
+                    A streamlined, secure platform coordinating industrial attachments between students, universities, and industry partners.
+                </p>
+</div>
+<div class="relative w-full h-48 rounded-lg overflow-hidden mt-stack-lg">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full opacity-80 mix-blend-overlay" data-alt="A modern university campus quad in bright daylight. The scene features contemporary academic buildings with large glass windows and clean architectural lines. Students are casually walking along paved paths. The lighting is crisp and inviting, conveying a sense of academic excellence and forward-thinking education within a professional, high-density environment. Soft blue skies complement the architectural tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdz2gWzvYvsm_59rYjUWi_V7NfSvY7vPvMlbUgeKMNzxVwCXBCtGBqJjVgzvD-pNNZ__LQRblKbybeVzyj9nplyjom4UEBLt6r0TTZOvkQBd3S7lJwVl4uRpKcmW6FNsWC4HnxMbt9qMj6w7pDTa9keLiPrM2WKB5Nsdgrr3Q1K2yR3SathXAAlsPCB9n5zdVEuzQ50us1E12jLmfp5avh_-T89w40FQwU9h2BeL1heavqximZaeagAg')"></div>
+</div>
+</div>
+<!-- Login Form Section -->
+<div class="p-stack-lg flex flex-col justify-center bg-surface-container-lowest">
+<!-- Mobile Header -->
+<div class="md:hidden flex items-center gap-stack-sm mb-stack-lg text-primary-container">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
+<h1 class="font-headline-sm text-headline-sm tracking-tight font-bold">EduAttach</h1>
+</div>
+<div class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-base">Welcome Back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select your role to continue.</p>
+</div>
+<!-- Role Selection Grid -->
+<div class="grid grid-cols-2 gap-stack-sm mb-stack-lg" id="role-selection">
+<button class="role-btn flex flex-col items-center justify-center p-stack-md border border-outline-variant rounded-lg hover:border-secondary-container transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-container focus:ring-offset-2 role-card-active" data-role="student" type="button">
+<div class="icon-container w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low text-on-surface-variant mb-stack-sm transition-colors">
+<span class="material-symbols-outlined">person</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Student</span>
+</button>
+<button class="role-btn flex flex-col items-center justify-center p-stack-md border border-outline-variant rounded-lg hover:border-secondary-container transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-container focus:ring-offset-2 bg-surface-container-lowest" data-role="university_supervisor" type="button">
+<div class="icon-container w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low text-on-surface-variant mb-stack-sm transition-colors">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Uni Supervisor</span>
+</button>
+<button class="role-btn flex flex-col items-center justify-center p-stack-md border border-outline-variant rounded-lg hover:border-secondary-container transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-container focus:ring-offset-2 bg-surface-container-lowest" data-role="industrial_supervisor" type="button">
+<div class="icon-container w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low text-on-surface-variant mb-stack-sm transition-colors">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Ind Supervisor</span>
+</button>
+<button class="role-btn flex flex-col items-center justify-center p-stack-md border border-outline-variant rounded-lg hover:border-secondary-container transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-container focus:ring-offset-2 bg-surface-container-lowest" data-role="admin" type="button">
+<div class="icon-container w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low text-on-surface-variant mb-stack-sm transition-colors">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Coordinator</span>
+</button>
+</div>
+<!-- Form -->
+<div id="error-banner" style="display:none;" class="mb-stack-md p-3 rounded-lg bg-error-container text-on-error-container font-body-md text-body-md"></div>
+<form class="space-y-stack-md" id="login-form">
+<input id="selected_role_input" name="selected_role" type="hidden" value="student">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base" for="email">Institutional Email <span class="text-error">*</span></label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT focus:ring-1 focus:ring-secondary focus:border-secondary font-body-md text-body-md bg-surface text-on-surface outline-none transition-colors" id="email" name="email" placeholder="user@university.edu" required="" type="email">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-base" for="password">Password <span class="text-error">*</span></label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT focus:ring-1 focus:ring-secondary focus:border-secondary font-body-md text-body-md bg-surface text-on-surface outline-none transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password">
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="h-4 w-4 text-secondary focus:ring-secondary border-outline-variant rounded-DEFAULT" id="remember-me" name="remember-me" type="checkbox">
+<label class="ml-2 block font-body-md text-body-md text-on-surface-variant" for="remember-me">
+                            Remember me
+                        </label>
+</div>
+<div class="text-sm">
+<a class="font-label-md text-label-md text-secondary hover:text-secondary-container transition-colors" href="#" onclick="toast('Password resets are handled by your Attachment Coordinator. Ask them to reset it for you; you will then be asked to choose a new one.', false, 7000); return false;">Forgot password?</a>
+</div>
+</div>
+<div class="pt-stack-sm">
+<button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm font-label-md text-label-md text-on-primary bg-secondary hover:bg-secondary-container focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-colors" type="submit" id="signin-btn">
+                        Sign In
+                    </button>
+</div>
+</form>
+<div class="mt-stack-lg text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    University supervisor? <a class="font-label-md text-label-md text-secondary hover:text-secondary-container transition-colors" href="register.html">Register here</a><span class="block mt-1">Students and industrial supervisors receive login credentials from the coordinator.</span>
+</p>
+</div>
+</div>
+</main>
+<script src="js/api.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // If already logged in, skip straight to the right dashboard
+            const existingUser = getUser();
+            if (existingUser && getToken()) {
+                window.location.href = roleHomePage(existingUser.role);
+                return;
+            }
+
+            const roleButtons = document.querySelectorAll('.role-btn');
+            const roleInput = document.getElementById('selected_role_input');
+
+            roleButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    roleButtons.forEach(b => {
+                        b.classList.remove('role-card-active');
+                        b.classList.add('bg-surface-container-lowest');
+                    });
+                    btn.classList.add('role-card-active');
+                    btn.classList.remove('bg-surface-container-lowest');
+                    roleInput.value = btn.dataset.role;
+                });
+            });
+
+            document.getElementById('login-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const errorBanner = document.getElementById('error-banner');
+                errorBanner.style.display = 'none';
+
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const expectedRole = roleInput.value;
+                const btn = document.getElementById('signin-btn');
+                btn.disabled = true;
+                btn.textContent = 'Signing in...';
+
+                try {
+                    const data = await apiRequest('/auth/login', {
+                        method: 'POST',
+                        auth: false,
+                        body: { email, password },
+                    });
+
+                    if (data.user.role !== expectedRole) {
+                        throw new Error(`This account is registered as ${roleLabel(data.user.role)}, not ${roleLabel(expectedRole)}. Select the correct role tab.`);
+                    }
+
+                    saveSession(data.token, data.user);
+                    window.location.href = roleHomePage(data.user.role);
+                } catch (err) {
+                    errorBanner.textContent = err.message;
+                    errorBanner.style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Sign In';
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

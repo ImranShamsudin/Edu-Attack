@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# secrets - NEVER commit these
+.env
+.env.*
+!.env.example
+
+# user uploads (keep the folder, not the files)
+attachment-backend/uploads/final-reports/*
+!attachment-backend/uploads/final-reports/.gitkeep
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.lnk
+.vscode/
+.idea/
+*.log
+
+# Other uploaded files
+attachment-backend/uploads/*
+!attachment-backend/uploads/.gitkeep
+!attachment-backend/uploads/final-reports/
+!attachment-backend/uploads/final-reports/.gitkeep

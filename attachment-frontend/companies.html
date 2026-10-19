@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Companies - EduAttach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="js/tailwind-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #f2f4f6; color: #191c1e; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20; }
+  .glass-card { background: rgba(255,255,255,0.95); border: 1px solid #E2E8F0; border-radius: 0.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+</style>
+</head>
+<body class="bg-surface-container-low text-on-surface">
+<main class="md:ml-[260px] pt-16 min-h-screen">
+<div class="p-container-padding grid grid-cols-12 gap-gutter auto-rows-min">
+
+<div class="col-span-12 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+  <div>
+    <h2 class="font-display-lg text-display-lg text-on-surface mb-1">Companies</h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">Host organizations on file, their contact details and primary industrial supervisor. Students create entries when they submit a placement, so check names for typos here.</p>
+  </div>
+  <button class="px-4 py-2 bg-secondary text-white rounded-lg font-label-md text-label-md font-semibold hover:bg-secondary/90 transition-colors flex items-center gap-2 self-start" id="toggle-add-form-btn"><span class="material-symbols-outlined text-[18px]">add_business</span> Add company</button>
+</div>
+
+<div class="col-span-12 glass-card p-6" id="add-company-panel" style="display:none">
+  <h3 class="font-headline-sm text-headline-sm mb-4">New organization</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
+    <div><label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="new-org-name">Company name</label><input class="w-full px-3 py-2 border border-outline-variant rounded-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none bg-white" id="new-org-name" maxlength="150" placeholder="e.g. Safaricom PLC" type="text"></div>
+    <div><label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="new-org-address">Address</label><input class="w-full px-3 py-2 border border-outline-variant rounded-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none bg-white" id="new-org-address" maxlength="255" placeholder="e.g. Westlands, Nairobi" type="text"></div>
+    <div><label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="new-org-phone">Phone</label><input class="w-full px-3 py-2 border border-outline-variant rounded-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none bg-white" id="new-org-phone" maxlength="30" type="text"></div>
+    <div><label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="new-org-email">Email</label><input class="w-full px-3 py-2 border border-outline-variant rounded-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none bg-white" id="new-org-email" maxlength="150" type="email"></div>
+    <div class="sm:col-span-2"><label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="new-org-contact">Primary contact (industrial supervisor)</label>
+      <select class="w-full px-3 py-2 border border-outline-variant rounded-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none bg-white" id="new-org-contact"><option value="">-- None yet --</option></select></div>
+  </div>
+  <button class="mt-4 px-4 py-2 bg-secondary text-white rounded-lg font-label-md text-label-md font-semibold hover:bg-secondary/90 transition-colors" id="submit-org-btn">Save organization</button>
+</div>
+
+<div class="col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-gutter">
+  <div class="glass-card p-5"><p class="font-label-md text-label-md text-on-surface-variant uppercase">Total companies</p><div class="font-headline-md text-headline-md mt-1" id="stat-total-orgs">-</div></div>
+  <div class="glass-card p-5"><p class="font-label-md text-label-md text-on-surface-variant uppercase">With a primary contact</p><div class="font-headline-md text-headline-md mt-1" id="stat-with-contact">-</div></div>
+  <div class="glass-card p-5"><p class="font-label-md text-label-md text-on-surface-variant uppercase">Without a contact</p><div class="font-headline-md text-headline-md mt-1" id="stat-without-contact">-</div></div>
+</div>
+
+<div class="col-span-12 glass-card p-0">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead><tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider border-b border-outline-variant"><th class="p-4 font-semibold">Company</th><th class="p-4 font-semibold">Company contact details</th><th class="p-4 font-semibold">Primary contact</th><th class="p-4 font-semibold text-right">Action</th></tr></thead>
+      <tbody class="font-body-md text-body-md" id="orgs-tbody"><tr><td colspan="4" class="p-6 text-center text-on-surface-variant">Loading...</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+</main>
+<script src="js/api.js"></script>
+<script src="js/admin-shell.js"></script>
+<script>
+
+const currentUser = requireAuth(['admin']);
+mountAdminShell('companies', { searchPlaceholder: 'Search companies...' });
+
+const $ = (id) => document.getElementById(id);
+let orgs = [];
+let contacts = [];
+let searchQuery = '';
+window.onShellSearch = (q) => { searchQuery = q; renderOrgs(); };
+
+$('toggle-add-form-btn').addEventListener('click', () => {
+  const p = $('add-company-panel');
+  p.style.display = p.style.display === 'none' ? 'block' : 'none';
+});
+
+const contactOptions = (selectedId) => '<option value="">-- None --</option>' + contacts.map((u) =>
+  `<option value="${esc(u.id)}" ${String(u.id) === String(selectedId) ? 'selected' : ''}>${esc(u.name)} (${esc(u.email)})</option>`).join('');
+
+async function loadContacts() {
+  try {
+    const data = await apiRequest('/admin/users?role=industrial_supervisor&status=approved');
+    contacts = data.users.filter((u) => u.is_active);
+    $('new-org-contact').innerHTML = contactOptions('');
+    renderOrgs();
+  } catch (err) { toast(err.message, true); }
+}
+
+async function loadOrgs() {
+  try {
+    const data = await apiRequest('/organizations');
+    orgs = data.organizations;
+    $('stat-total-orgs').textContent = orgs.length;
+    $('stat-with-contact').textContent = orgs.filter((o) => o.contact_id).length;
+    $('stat-without-contact').textContent = orgs.filter((o) => !o.contact_id).length;
+    renderOrgs();
+  } catch (err) { toast(err.message, true); }
+}
+
+function renderOrgs() {
+  const rows = orgs.filter((o) => !searchQuery || `${o.name} ${o.address || ''} ${o.contact_name || ''}`.toLowerCase().includes(searchQuery));
+  if (rows.length === 0) {
+    $('orgs-tbody').innerHTML = `<tr><td colspan="4" class="p-6 text-center text-on-surface-variant">${orgs.length === 0 ? 'No organizations yet. Add one above, or wait for students to submit placements.' : 'No companies match.'}</td></tr>`;
+    return;
+  }
+  $('orgs-tbody').innerHTML = rows.map((o) => `
+    <tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+      <td class="p-4"><div class="font-semibold">${esc(o.name)}</div><div class="text-on-surface-variant text-xs">${esc(o.address || '-')}</div></td>
+      <td class="p-4 text-sm"><div>${esc(o.phone || '-')}</div><div class="text-on-surface-variant text-xs">${esc(o.email || '')}</div></td>
+      <td class="p-4">
+        <select data-action="contact" data-id="${esc(o.id)}" class="w-full max-w-xs px-2 py-1 border border-outline-variant rounded text-sm bg-white">${contactOptions(o.contact_id)}</select>
+        ${contacts.length === 0 ? '<div class="text-xs text-on-surface-variant mt-1">No industrial supervisors yet - create one on the Dashboard.</div>' : ''}
+      </td>
+      <td class="p-4 text-right"><button class="text-secondary hover:underline text-sm" data-action="edit" data-id="${esc(o.id)}">Edit</button></td>
+    </tr>`).join('');
+}
+
+document.addEventListener('change', async (e) => {
+  const el = e.target.closest('select[data-action="contact"]');
+  if (!el) return;
+  try {
+    await apiRequest(`/organizations/${el.dataset.id}/contact`, { method: 'PATCH', body: { primary_contact_id: el.value ? Number(el.value) : null } });
+    toast('Primary contact updated.');
+    loadOrgs();
+  } catch (err) { toast(err.message, true); loadOrgs(); }
+});
+
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('button[data-action="edit"]');
+  if (!el) return;
+  const o = orgs.find((x) => String(x.id) === el.dataset.id);
+  if (!o) return;
+  const field = (id, label, value, type = 'text', max = 150) =>
+    `<div><label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="${id}">${label}</label><input id="${id}" type="${type}" maxlength="${max}" class="w-full px-3 py-2 border border-outline-variant rounded-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none bg-white" value="${esc(value || '')}"></div>`;
+  openModal('Edit company', `<div class="space-y-4">
+      ${field('edit-org-name', 'Company name', o.name)}
+      ${field('edit-org-address', 'Address', o.address, 'text', 255)}
+      ${field('edit-org-phone', 'Phone', o.phone, 'text', 30)}
+      ${field('edit-org-email', 'Email', o.email, 'email')}
+    </div><button id="edit-org-save" class="mt-5 px-4 py-2 bg-secondary text-white rounded-lg font-label-md text-label-md font-semibold hover:bg-secondary/90 transition-colors">Save changes</button>`);
+  $('edit-org-save').addEventListener('click', async () => {
+    const name = $('edit-org-name').value.trim();
+    if (!name) { toast('Company name is required.', true); return; }
+    try {
+      await apiRequest(`/organizations/${o.id}`, { method: 'PATCH', body: {
+        name, address: $('edit-org-address').value, phone: $('edit-org-phone').value, email: $('edit-org-email').value } });
+      closeModal();
+      toast('Company updated.');
+      loadOrgs();
+    } catch (err) { toast(err.message, true); }
+  });
+});
+
+$('submit-org-btn').addEventListener('click', async () => {
+  const name = $('new-org-name').value.trim();
+  if (!name) { toast('Company name is required.', true); return; }
+  const contactId = $('new-org-contact').value;
+  try {
+    await apiRequest('/organizations', { method: 'POST', body: {
+      name,
+      address: $('new-org-address').value.trim() || null,
+      phone: $('new-org-phone').value.trim() || null,
+      email: $('new-org-email').value.trim() || null,
+      primary_contact_id: contactId ? Number(contactId) : null,
+    } });
+    toast('Organization added!');
+    ['new-org-name', 'new-org-address', 'new-org-phone', 'new-org-email', 'new-org-contact'].forEach((id) => { $(id).value = ''; });
+    $('add-company-panel').style.display = 'none';
+    loadOrgs();
+  } catch (err) { toast(err.message, true); }
+});
+
+loadOrgs();
+loadContacts();
+
+</script>
+</body>
+</html>

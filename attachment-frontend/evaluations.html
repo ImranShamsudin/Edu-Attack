@@ -1,0 +1,321 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Evaluations &amp; Assessments - EduAttach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-tertiary-container": "#7a8aa2",
+                        "secondary-container": "#006df8",
+                        "secondary-fixed": "#d9e2ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#465f88",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#0056c6",
+                        "on-secondary-fixed": "#001945",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c4c6cf",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#fefcff",
+                        "on-primary-container": "#708ab5",
+                        "primary": "#000a1e",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eceef0",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#aec7f6",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed": "#001b3d",
+                        "tertiary": "#000b1b",
+                        "on-secondary-fixed-variant": "#00429c",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "primary-container": "#002147",
+                        "secondary-fixed-dim": "#b0c6ff",
+                        "tertiary-container": "#122236",
+                        "on-surface-variant": "#44474e",
+                        "on-background": "#191c1e",
+                        "on-surface": "#191c1e",
+                        "inverse-primary": "#aec7f6",
+                        "outline": "#74777f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "sidebar-width": "260px",
+                        "stack-lg": "32px",
+                        "stack-sm": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "code-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "code-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col md:flex-row">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-primary dark:bg-tertiary-container fixed left-0 top-0 h-screen w-[260px] shadow-md flex-col py-stack-lg z-50">
+<div class="px-container-padding mb-8 flex flex-col items-start gap-2">
+<h1 class="font-headline-sm text-headline-sm font-black text-on-primary">EduAttach</h1>
+<p class="font-label-md text-label-md text-tertiary-fixed-dim">University Portal</p>
+</div>
+<div class="flex-grow">
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="student.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="placement.html">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-label-md text-label-md">Placements</span>
+</a>
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="logbook.html">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Logbooks</span>
+</a>
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="weekly-reports.html">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl px-4 py-3 mx-2 group transition-all duration-300" href="evaluations.html">
+<span class="material-symbols-outlined" data-icon="edit_note" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="font-label-md text-label-md font-bold">Assessments</span>
+</a>
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="final-report.html">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+<span class="font-label-md text-label-md">Final Report</span>
+</a>
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+
+
+<!-- Active State -->
+
+
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto">
+
+<a class="flex items-center gap-3 text-tertiary-fixed-dim hover:text-on-primary px-4 py-3 mx-2 group transition-all duration-300 hover:bg-on-primary-fixed-variant/20 rounded-xl" href="#" onclick="logout(); return false;">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-[260px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="w-full h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-container-padding sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Toggle (Placeholder) -->
+<button data-menu-toggle aria-label="Open menu" class="md:hidden text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+
+
+<div class="w-8 h-8 rounded-full border border-outline-variant cursor-pointer flex items-center justify-center bg-primary-container text-white text-xs font-bold" data-user-initials></div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-container-padding max-w-[1440px] mx-auto w-full">
+<!-- Header -->
+<div class="mb-stack-lg">
+<h2 class="font-display-lg text-display-lg text-primary mb-stack-sm md:font-display-lg md:text-display-lg font-display-lg-mobile text-display-lg-mobile">Evaluations &amp; Assessments</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">Supervisor feedback and university visit evaluations for your current attachment.</p>
+</div>
+<!-- No Attachment Notice -->
+<div id="no-attachment-notice" class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 text-center" style="display:none;">
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">Register your attachment first to see evaluations.</p>
+<a href="placement.html" class="inline-block px-4 py-2 bg-secondary text-white rounded-lg font-label-md text-label-md hover:bg-secondary/90 transition-colors">Register Attachment</a>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter" id="eval-grid" style="display:none;">
+<!-- Left Column (Main Evaluations) -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Industrial Supervisor Feedback -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-container-padding shadow-sm">
+<div class="flex items-center justify-between mb-stack-md border-b border-outline-variant pb-stack-sm">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">domain</span>
+                                Industrial Supervisor Feedback
+                            </h3>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-md text-label-md" id="ind-feedback-count">0 comments</span>
+</div>
+<div class="space-y-3" id="ind-feedback-list">
+<p class="font-body-md text-body-md text-on-surface-variant">No feedback recorded yet.</p>
+</div>
+</div>
+<!-- University Supervisor Evaluation (Visits) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-container-padding shadow-sm">
+<div class="flex items-center justify-between mb-stack-md border-b border-outline-variant pb-stack-sm">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">school</span>
+                                University Supervisor Visits
+                            </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md" id="visits-list">
+<!-- populated dynamically -->
+</div>
+</div>
+</div>
+<!-- Right Column (Summary) -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-container-padding shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-stack-md border-b border-outline-variant pb-2">Summary</h3>
+<div class="flex justify-between items-center py-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Entry Comments</span>
+<span class="font-headline-sm text-headline-sm text-primary" id="summary-ind-comments">0</span>
+</div>
+<div class="flex justify-between items-center py-2 border-t border-outline-variant">
+<span class="font-body-md text-body-md text-on-surface-variant">Weekly Report Comments</span>
+<span class="font-headline-sm text-headline-sm text-primary" id="summary-report-comments">0</span>
+</div>
+<div class="flex justify-between items-center py-2 border-t border-outline-variant">
+<span class="font-body-md text-body-md text-on-surface-variant">University Visits Completed</span>
+<span class="font-headline-sm text-headline-sm text-primary" id="summary-visits">0 / 2</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+<script src="js/api.js"></script>
+<script>
+    const currentUser = requireAuth(['student']);
+    const $ = (id) => document.getElementById(id);
+
+    async function init() {
+      try {
+        const attData = await apiRequest('/attachments/me');
+        if (attData.attachments.length === 0) {
+          $('no-attachment-notice').style.display = 'block';
+          $('eval-grid').style.display = 'none';
+          return;
+        }
+        $('no-attachment-notice').style.display = 'none';
+        $('eval-grid').style.display = 'grid';
+
+        const [logData, wrData, visitsData] = await Promise.all([
+          apiRequest('/logbook/me'),
+          apiRequest('/weekly-reports/me'),
+          apiRequest('/attachments/me/visits'),
+        ]);
+        renderIndFeedback(logData.entries);
+        renderVisits(visitsData.visits);
+        renderSummary(logData.entries, wrData.weekly_reports, visitsData.visits);
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    function renderIndFeedback(entries) {
+      const all = entries.flatMap((e) => (e.feedback || []).map((f) => ({ ...f, entryDate: e.entry_date })));
+      all.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      $('ind-feedback-count').textContent = `${all.length} comment${all.length === 1 ? '' : 's'}`;
+      const list = $('ind-feedback-list');
+      if (all.length === 0) {
+        list.innerHTML = '<p class="font-body-md text-body-md text-on-surface-variant">No feedback recorded yet.</p>';
+        return;
+      }
+      list.innerHTML = all.slice(0, 5).map((f) => `
+        <div class="bg-surface p-3 rounded-lg border border-outline-variant">
+          <p class="font-body-md text-body-md text-on-surface italic whitespace-pre-line">"${esc(f.comment)}"</p>
+          <div class="flex justify-between mt-2 text-xs text-on-surface-variant">
+            <span>On entry: ${esc(formatDate(f.entryDate))}</span>
+            <span>${esc(timeAgo(f.created_at))}</span>
+          </div>
+        </div>`).join('');
+    }
+
+    function renderVisits(visits) {
+      const card = (visit, num) => {
+        if (!visit) {
+          return `
+            <div class="border border-dashed border-outline-variant rounded-lg p-4 flex flex-col items-center justify-center text-center min-h-[140px]">
+              <span class="material-symbols-outlined text-on-surface-variant mb-2">pending</span>
+              <p class="font-label-md text-label-md text-on-surface-variant">Visit ${num} not yet recorded</p>
+            </div>`;
+        }
+        return `
+          <div class="border border-outline-variant rounded-lg p-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="font-label-md text-label-md font-bold text-primary">Visit ${num}</span>
+              <span class="text-xs text-on-surface-variant">${esc(formatDate(visit.visit_date))}</span>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface whitespace-pre-line">${esc(visit.comments)}</p>
+          </div>`;
+      };
+      $('visits-list').innerHTML = card(visits.find((v) => v.visit_number === 1), 1) + card(visits.find((v) => v.visit_number === 2), 2);
+    }
+
+    function renderSummary(entries, weeklyReports, visits) {
+      $('summary-ind-comments').textContent = entries.reduce((sum, e) => sum + (e.feedback ? e.feedback.length : 0), 0);
+      $('summary-report-comments').textContent = weeklyReports.filter((w) => w.supervisor_comment).length;
+      $('summary-visits').textContent = `${visits.length} / 2`;
+    }
+
+    init();
+    </script>
+
+</body></html>

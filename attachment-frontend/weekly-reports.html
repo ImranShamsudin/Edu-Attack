@@ -1,0 +1,422 @@
+<!DOCTYPE html><html class="h-full bg-surface-container-low text-on-surface" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Weekly Reports - EduAttach</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with custom config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-container-low": "#f2f4f6",
+                            "on-primary-fixed": "#001b3d",
+                            "on-surface": "#191c1e",
+                            "secondary-fixed-dim": "#b0c6ff",
+                            "on-primary": "#ffffff",
+                            "primary-fixed": "#d6e3ff",
+                            "surface-container-highest": "#e0e3e5",
+                            "on-background": "#191c1e",
+                            "tertiary-fixed-dim": "#b7c8e1",
+                            "on-secondary": "#ffffff",
+                            "inverse-surface": "#2d3133",
+                            "surface-container": "#eceef0",
+                            "secondary-fixed": "#d9e2ff",
+                            "inverse-on-surface": "#eff1f3",
+                            "primary-fixed-dim": "#aec7f6",
+                            "surface-container-lowest": "#ffffff",
+                            "on-primary-fixed-variant": "#2d476f",
+                            "outline": "#74777f",
+                            "on-error": "#ffffff",
+                            "on-tertiary-fixed-variant": "#38485d",
+                            "on-error-container": "#93000a",
+                            "on-secondary-fixed-variant": "#00429c",
+                            "on-secondary-container": "#fefcff",
+                            "primary": "#000a1e",
+                            "error-container": "#ffdad6",
+                            "tertiary-container": "#122236",
+                            "on-secondary-fixed": "#001945",
+                            "on-tertiary-fixed": "#0b1c30",
+                            "tertiary": "#000b1b",
+                            "primary-container": "#002147",
+                            "surface-dim": "#d8dadc",
+                            "surface-container-high": "#e6e8ea",
+                            "on-tertiary": "#ffffff",
+                            "background": "#f7f9fb",
+                            "on-primary-container": "#708ab5",
+                            "inverse-primary": "#aec7f6",
+                            "surface-bright": "#f7f9fb",
+                            "surface-variant": "#e0e3e5",
+                            "outline-variant": "#c4c6cf",
+                            "tertiary-fixed": "#d3e4fe",
+                            "secondary-container": "#006df8",
+                            "surface-tint": "#465f88",
+                            "error": "#ba1a1a",
+                            "surface": "#f7f9fb",
+                            "secondary": "#0056c6",
+                            "on-surface-variant": "#44474e",
+                            "on-tertiary-container": "#7a8aa2"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "container-padding": "24px",
+                            "sidebar-width": "260px",
+                            "stack-lg": "32px",
+                            "base": "4px",
+                            "stack-sm": "8px",
+                            "stack-md": "16px",
+                            "gutter": "16px"
+                    },
+                    "fontFamily": {
+                            "code-sm": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "headline-sm": ["Inter"],
+                            "body-md": ["Inter"],
+                            "label-md": ["Inter"],
+                            "display-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                            "code-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                            "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                            "display-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        /* Base typography setting */
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full flex overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col bg-primary h-full w-sidebar-width shrink-0 z-50">
+<!-- Brand Header -->
+<div class="px-container-padding py-stack-lg flex items-center gap-stack-sm border-b border-primary-container">
+<div class="w-10 h-10 rounded bg-white flex items-center justify-center shrink-0">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">EA</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-white">EduAttach</h1>
+<p class="font-label-md text-label-md text-primary-fixed-dim">Management System</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-stack-md flex flex-col gap-base">
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="student.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">dashboard</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="placement.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">work</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Placements</span>
+</a>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg bg-secondary-container text-on-secondary-container font-semibold cursor-pointer duration-200" href="logbook.html">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+<span class="font-body-md text-body-md">Logbooks</span>
+</a>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="weekly-reports.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">analytics</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Reports</span>
+</a>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="evaluations.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">assignment_turned_in</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Assessments</span>
+</a>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="final-report.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">upload_file</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Final Report</span>
+</a>
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="settings.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">settings</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Settings</span>
+</a>
+
+<!-- ACTIVE STATE -->
+
+
+
+<a class="flex items-center gap-stack-md px-container-padding py-stack-sm mx-2 rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="settings.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">settings</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Settings</span>
+</a>
+</div>
+<!-- CTA & Footer -->
+<div class="p-container-padding border-t border-primary-container mt-auto space-y-stack-md">
+<button onclick="location.href='placement.html'" class="w-full bg-secondary text-white py-2 rounded-lg font-label-md text-label-md font-semibold hover:bg-secondary/90 transition-colors">
+                New Application
+            </button>
+<div class="space-y-base">
+
+<a class="flex items-center gap-stack-md px-2 py-stack-sm rounded-lg text-on-primary-fixed-variant hover:bg-on-primary-fixed-variant/20 transition-colors cursor-pointer duration-200 group" href="#" onclick="logout(); return false;">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white transition-colors">logout</span>
+<span class="font-body-md text-body-md group-hover:text-white transition-colors">Logout</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface h-16 shrink-0 flex justify-between items-center px-container-padding z-40 border-b border-outline-variant w-full">
+<!-- Mobile Menu / Search -->
+<div class="flex items-center gap-stack-md flex-1">
+<button data-menu-toggle aria-label="Open menu" class="md:hidden text-primary hover:opacity-80">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div></div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-stack-md">
+
+
+<button onclick="location.href='settings.html'" title="Account settings" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label-md text-label-md font-bold overflow-hidden border border-outline-variant">
+<div class="w-full h-full  flex items-center justify-center bg-primary-container text-white text-xs font-bold" data-user-initials></div>
+</div>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="max-w-[1200px] mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface md:font-display-lg md:text-display-lg font-display-lg-mobile text-display-lg-mobile">Weekly Reports</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Submit your weekly placement summary and track supervisor feedback.</p>
+</div>
+</div>
+<!-- No Attachment Notice -->
+<div id="no-attachment-notice" class="bg-white rounded-xl border border-outline-variant p-6 text-center" style="display:none;">
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">Register your attachment first to submit weekly reports.</p>
+<a href="placement.html" class="inline-block px-4 py-2 bg-secondary text-white rounded-lg font-label-md text-label-md hover:bg-secondary/90 transition-colors">Register Attachment</a>
+</div>
+<!-- Content Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter" id="wr-grid" style="display:none;">
+<!-- Left Column: Current & History -->
+<div class="lg:col-span-8 flex flex-col gap-stack-lg">
+<!-- New Report Submission Card -->
+<div class="bg-white rounded-xl border border-outline-variant p-6">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Submit Weekly Report</h3>
+</div>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Week Number <span class="text-error">*</span></label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors" id="wr-week-number" type="number" min="1" max="52">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Week Ending <span class="text-error">*</span></label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors" id="wr-week-ending" type="date">
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Weekly Summary <span class="text-error">*</span></label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors" id="wr-report-text" placeholder="Describe your key tasks, learnings, and challenges this week..." rows="5"></textarea>
+</div>
+<div class="flex justify-end gap-3 pt-4 border-t border-outline-variant">
+<button class="px-4 py-2 bg-secondary text-white rounded-lg font-label-md text-label-md font-semibold hover:bg-secondary/90 transition-colors" id="wr-submit-btn" type="button">
+                                        Submit Report
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Report History Table -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Report History</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold">Week</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold">Week Ending</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-body-md text-body-md text-on-surface" id="wr-history-tbody">
+<tr><td colspan="3" class="py-6 px-4 text-center text-on-surface-variant">No reports yet.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column: Supervisor Feedback -->
+<div class="lg:col-span-4 flex flex-col gap-stack-lg">
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden flex flex-col h-full max-h-[800px]">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">forum</span>
+                                    Supervisor Feedback
+                                </h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Recent comments on your reports</p>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6" id="wr-feedback-list">
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">No feedback yet.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+<script src="js/api.js"></script>
+<script>
+    const currentUser = requireAuth(['student']);
+    const $ = (id) => document.getElementById(id);
+    let myAttachment = null;
+    let reports = [];
+
+    function showBanner(html, kind) {
+      let el = $('status-banner');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'status-banner';
+        const grid = $('wr-grid');
+        grid.parentNode.insertBefore(el, grid);
+      }
+      el.className = `mb-6 p-4 rounded-lg font-body-md text-body-md ${kind === 'error' ? 'bg-error-container text-on-error-container' : 'bg-secondary-fixed text-on-secondary-fixed'}`;
+      el.innerHTML = html;
+    }
+
+    async function init() {
+      try {
+        const data = await apiRequest('/attachments/me');
+        myAttachment = pickCurrentAttachment(data.attachments);
+        if (!myAttachment) {
+          $('no-attachment-notice').style.display = 'block';
+          $('wr-grid').style.display = 'none';
+          return;
+        }
+        $('no-attachment-notice').style.display = 'none';
+        $('wr-grid').style.display = 'grid';
+
+        const open = myAttachment.status === 'active';
+        ['wr-week-number', 'wr-week-ending', 'wr-report-text', 'wr-submit-btn'].forEach((id) => { $(id).disabled = !open; });
+        $('wr-week-number').min = 1;
+        $('wr-week-number').max = 52;
+        if (myAttachment.status === 'pending') {
+          showBanner('<strong>Your placement is waiting for coordinator approval.</strong> You can submit weekly reports once it is approved.');
+        } else if (myAttachment.status === 'rejected') {
+          showBanner(`<strong>Your placement was rejected:</strong> ${esc(myAttachment.rejection_reason || 'no reason given')}. <a class="underline font-semibold" href="placement.html">Submit a corrected placement</a>.`, 'error');
+        } else if (myAttachment.status === 'completed') {
+          showBanner('<strong>Your attachment is complete.</strong> Weekly reports are now read-only.');
+        }
+        await loadReports();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    $('wr-submit-btn').addEventListener('click', async () => {
+      const weekNumber = $('wr-week-number').value;
+      const weekEnding = $('wr-week-ending').value;
+      const reportText = $('wr-report-text').value.trim();
+      if (!weekNumber || !weekEnding || !reportText) { toast('Please fill in all fields.', true); return; }
+      try {
+        await apiRequest('/weekly-reports', {
+          method: 'POST',
+          body: { attachment_id: myAttachment.id, week_number: Number(weekNumber), week_ending: weekEnding, report_text: reportText },
+        });
+        $('wr-week-number').value = '';
+        $('wr-week-ending').value = '';
+        $('wr-report-text').value = '';
+        toast('Weekly report saved!');
+        loadReports();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    });
+
+    async function loadReports() {
+      try {
+        const data = await apiRequest('/weekly-reports/me');
+        reports = data.weekly_reports;
+        renderHistory();
+        renderFeedback();
+      } catch (err) {
+        toast(err.message, true);
+      }
+    }
+
+    function renderHistory() {
+      const tbody = $('wr-history-tbody');
+      if (reports.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="py-6 px-4 text-center text-on-surface-variant">No reports yet.</td></tr>';
+        return;
+      }
+      const editable = myAttachment && myAttachment.status === 'active';
+      tbody.innerHTML = reports.map((w) => {
+        const reviewed = !!w.supervisor_comment;
+        const badge = reviewed
+          ? '<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#E6F4EA] text-[#137333] font-label-md text-label-md">Reviewed</span>'
+          : '<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-md text-label-md">Pending Review</span>';
+        const edit = !reviewed && editable
+          ? `<button type="button" class="ml-2 text-secondary hover:underline text-sm" data-edit="${esc(w.week_number)}">Edit</button>` : '';
+        return `
+          <tr class="hover:bg-surface-container-low transition-colors align-top">
+            <td class="py-3 px-4 font-semibold">Week ${esc(w.week_number)}
+              <details class="font-normal text-sm text-on-surface-variant mt-1"><summary class="cursor-pointer text-secondary">Read report</summary><p class="mt-1 whitespace-pre-line">${esc(w.report_text)}</p></details>
+            </td>
+            <td class="py-3 px-4 text-on-surface-variant">${esc(formatDate(w.week_ending))}</td>
+            <td class="py-3 px-4">${badge}${edit}</td>
+          </tr>`;
+      }).join('');
+    }
+
+    // "Edit" loads an un-reviewed report back into the form; saving again replaces it.
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-edit]');
+      if (!btn) return;
+      const w = reports.find((r) => String(r.week_number) === btn.dataset.edit);
+      if (!w) return;
+      $('wr-week-number').value = w.week_number;
+      $('wr-week-ending').value = w.week_ending;
+      $('wr-report-text').value = w.report_text;
+      $('wr-report-text').focus();
+      toast(`Editing Week ${w.week_number}. Change it and press submit to save.`);
+    });
+
+    function renderFeedback() {
+      const list = $('wr-feedback-list');
+      const commented = reports.filter((w) => w.supervisor_comment).sort((a, b) => new Date(b.commented_at) - new Date(a.commented_at));
+      if (commented.length === 0) {
+        list.innerHTML = '<p class="font-body-md text-body-md text-on-surface-variant text-sm">No feedback yet.</p>';
+        return;
+      }
+      list.innerHTML = commented.map((w) => `
+        <div class="relative pl-4 border-l-2 border-secondary-fixed-dim">
+          <p class="font-label-md text-label-md text-on-surface-variant mb-2">Re: Week ${esc(w.week_number)} Report</p>
+          <div class="bg-surface rounded p-3 font-body-md text-body-md text-on-surface whitespace-pre-line">"${esc(w.supervisor_comment)}"</div>
+          <span class="font-label-md text-label-md text-outline mt-2 block">${esc(timeAgo(w.commented_at))}</span>
+        </div>`).join('');
+    }
+
+    init();
+    </script>
+
+</body></html>
