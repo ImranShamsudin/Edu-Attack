@@ -3,13 +3,18 @@
 // =============================================================================
 
 // ===== API CONFIG =====
-// - Opened through the backend (http://localhost:5000/...)  -> same origin, nothing to configure.
-// - Opened any other way (Live Server, file://, another port) -> talks to http://localhost:5000.
+// - Opened through the backend (Render, or http://localhost:5000)  -> same address, nothing to configure.
+// - Local Live Server / file:// -> talks to http://localhost:5000.
 // - To point somewhere else, define  window.API_BASE = 'https://your-api'  BEFORE loading this file.
- // ===== API CONFIG =====
-const API_BASE = (typeof window !== 'undefined' && window.API_BASE)
-  ? window.API_BASE
-  : window.location.origin;
+const API_BASE = (() => {
+  if (typeof window === 'undefined') return '';
+  if (window.API_BASE) return window.API_BASE;
+  const { protocol, hostname, port, origin } = window.location;
+  if (!protocol.startsWith('http')) return 'http://localhost:5000';
+  const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+  if (isLocal && port !== '5000') return 'http://localhost:5000';
+  return origin;
+})();
 
 // ===== SAFE OUTPUT =====
 // Every value that comes from the database or from a user MUST go through esc() before it is
@@ -238,12 +243,50 @@ function timeAgo(dateStr) {
   return formatDate(dateStr);
 }
 
-// Whole weeks between two dates (at least 1) - used for progress calculations.
-function weeksBetween(startStr, endStr) {
+// ===== PLACEMENT PROGRESS =====
+// Length of a placement in weeks, counting both the first and the last day and rounding UP,
+// e.g. 1 Sep - 31 Dec (122 days) = 18 weeks.
+function programWeeks(startStr, endStr) {
   const start = parseDate(startStr);
   const end = parseDate(endStr);
   if (!start || !end) return 1;
-  return Math.max(1, Math.round((end - start) / (7 * 86400000)));
+  const days = Math.round((end - start) / 86400000) + 1;
+  return Math.max(1, Math.ceil(days / 7));
+}
+const weeksBetween = programWeeks; // old name, still used by some pages
+
+// Where a student is in their placement, based on the CALENDAR.
+function programProgress(startStr, endStr, status) {
+  const start = parseDate(startStr);
+  const end = parseDate(endStr);
+  const totalWeeks = programWeeks(startStr, endStr);
+  if (!start || !end) return { totalWeeks, currentWeek: 0, pct: 0, state: 'upcoming', label: 'Not started' };
+
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const totalDays = Math.round((end - start) / 86400000) + 1;
+
+  let state = 'in_progress';
+  if (status === 'completed' || today > end) state = 'completed';
+  else if (today < start) state = 'upcoming';
+
+  let currentWeek = 0;
+  let pct = 0;
+  if (state === 'completed') {
+    currentWeek = totalWeeks;
+    pct = 100;
+  } else if (state === 'in_progress') {
+    const dayNumber = Math.round((today - start) / 86400000) + 1;
+    currentWeek = Math.min(totalWeeks, Math.ceil(dayNumber / 7));
+    pct = Math.min(99, Math.round((dayNumber / totalDays) * 100));
+  }
+
+  let label = 'In progress';
+  if (state === 'upcoming') label = 'Not started';
+  else if (state === 'completed') label = 'Completed';
+  else if (pct >= 75) label = 'Almost complete';
+  else if (pct >= 50) label = 'Half completed';
+  return { totalWeeks, currentWeek, pct, state, label };
 }
 
 // Today as 'YYYY-MM-DD' in the user's own time zone (for <input type="date" max="...">).
